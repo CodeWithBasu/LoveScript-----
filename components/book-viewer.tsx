@@ -5,6 +5,7 @@ import dynamic from "next/dynamic"
 import { books as allBooks } from "@/lib/books-data"
 import { BookPage, CoverPage } from "@/components/book-page"
 import { useIsMobile, useIsTablet } from "@/hooks/use-mobile"
+import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler"
 import { ChevronLeft, ChevronRight, Search, X, BookOpen } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -242,40 +243,46 @@ export function BookViewer() {
   const bookHeight = isMobile ? 580 : isTablet ? 800 : 1050
 
   return (
-    <div className="flex flex-col min-h-screen bg-linear-to-br from-rose-50 via-pink-50 to-red-50">
+    <div className="flex flex-col min-h-screen bg-linear-to-br from-rose-50 via-pink-50 to-red-50 dark:from-rose-950 dark:via-pink-950 dark:to-red-950 transition-colors duration-500">
       {/* Header */}
-      <header className="sticky top-0 z-50 backdrop-blur-md bg-rose-50/80 border-b border-rose-200">
+      <header className="sticky top-0 z-50 backdrop-blur-md bg-rose-50/80 dark:bg-rose-950/80 border-b border-rose-200 dark:border-rose-800 transition-colors duration-500">
         <div className="container mx-auto px-4 py-4">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <BookOpen className="w-8 h-8 text-rose-600" />
+              <BookOpen className="w-8 h-8 text-rose-600 dark:text-rose-400" />
               <div>
-                <h1 className="text-xl md:text-2xl font-serif font-bold text-rose-950">
+                <h1 className="text-xl md:text-2xl font-serif font-bold text-rose-950 dark:text-rose-100">
                   The Book of Love
                 </h1>
-                <p className="text-sm text-rose-700">Exploring the deepest emotion in the universe</p>
+                <p className="text-sm text-rose-700 dark:text-rose-300">Exploring the deepest emotion in the universe</p>
               </div>
             </div>
-            {/* Search */}
-            <div className="relative w-full md:w-72">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-rose-600" />
-              <Input
-                type="search"
-                placeholder="Search chapters..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 pr-10 bg-white/80 border-rose-300 focus-visible:ring-rose-500 text-rose-950 placeholder:text-rose-500"
-                aria-label="Search chapters"
-              />
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery("")}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-rose-600 hover:text-rose-900"
-                  aria-label="Clear search"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              )}
+            {/* Right Side: Search and Theme Toggle */}
+            <div className="flex items-center gap-4 w-full md:w-auto">
+              {/* Search */}
+              <div className="relative w-full md:w-72">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-rose-600 dark:text-rose-400" />
+                <Input
+                  type="search"
+                  placeholder="Search chapters..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-10 pr-10 bg-white/80 dark:bg-rose-900/80 border-rose-300 dark:border-rose-700 focus-visible:ring-rose-500 text-rose-950 dark:text-rose-100 placeholder:text-rose-500 dark:placeholder:text-rose-400"
+                  aria-label="Search chapters"
+                />
+                {searchQuery && (
+                  <button
+                    onClick={() => setSearchQuery("")}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-rose-600 dark:text-rose-400 hover:text-rose-900 dark:hover:text-rose-100"
+                    aria-label="Clear search"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+              
+              {/* Theme Toggler */}
+              <AnimatedThemeToggler className="p-2 bg-white/50 dark:bg-rose-900/50 hover:bg-white/80 dark:hover:bg-rose-800/80 rounded-full border border-rose-200 dark:border-rose-700 text-rose-600 dark:text-rose-400 transition-colors shrink-0" />
             </div>
           </div>
         </div>
@@ -286,9 +293,9 @@ export function BookViewer() {
         {filteredBooks.length === 0 ? (
           <div className="flex-1 flex items-center justify-center p-8">
             <div className="text-center">
-              <BookOpen className="w-16 h-16 text-rose-300 mx-auto mb-4" />
-              <h2 className="text-xl font-serif text-rose-900">No chapters found</h2>
-              <p className="text-rose-600 mt-2">Try a different search term</p>
+              <BookOpen className="w-16 h-16 text-rose-300 dark:text-rose-800 mx-auto mb-4" />
+              <h2 className="text-xl font-serif text-rose-900 dark:text-rose-200">No chapters found</h2>
+              <p className="text-rose-600 dark:text-rose-400 mt-2">Try a different search term</p>
             </div>
           </div>
         ) : (
@@ -296,7 +303,7 @@ export function BookViewer() {
             {/* Book Container with shadow */}
             <div className="relative">
               {/* Book shadow */}
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[90%] h-8 bg-rose-900/20 blur-xl rounded-full" />
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[90%] h-8 bg-rose-900/20 dark:bg-black/50 blur-xl rounded-full" />
 
               {/* Flip Book */}
               <HTMLFlipBook
@@ -349,16 +356,16 @@ export function BookViewer() {
                 size="icon"
                 onClick={goPrev}
                 disabled={currentPage === 0}
-                className="h-12 w-12 rounded-full border-rose-300 text-rose-900 hover:bg-rose-200 hover:text-rose-950 disabled:opacity-30 bg-transparent"
+                className="h-12 w-12 rounded-full border-rose-300 dark:border-rose-700 text-rose-900 dark:text-rose-200 hover:bg-rose-200 dark:hover:bg-rose-800 hover:text-rose-950 dark:hover:text-rose-50 disabled:opacity-30 bg-transparent"
                 aria-label="Previous page"
               >
                 <ChevronLeft className="h-6 w-6" />
               </Button>
 
               <div className="flex items-center gap-2 min-w-[120px] justify-center">
-                <span className="text-rose-900 font-serif font-medium text-lg">Page {currentPage + 1}</span>
-                <span className="text-rose-600">/</span>
-                <span className="text-rose-600">{totalPages || filteredBooks.length + 2}</span>
+                <span className="text-rose-900 dark:text-rose-200 font-serif font-medium text-lg">Page {currentPage + 1}</span>
+                <span className="text-rose-600 dark:text-rose-500">/</span>
+                <span className="text-rose-600 dark:text-rose-500">{totalPages || filteredBooks.length + 2}</span>
               </div>
 
               <Button
@@ -366,7 +373,7 @@ export function BookViewer() {
                 size="icon"
                 onClick={goNext}
                 disabled={currentPage >= totalPages - 1}
-                className="h-12 w-12 rounded-full border-rose-300 text-rose-900 hover:bg-rose-200 hover:text-rose-950 disabled:opacity-30"
+                className="h-12 w-12 rounded-full border-rose-300 dark:border-rose-700 text-rose-900 dark:text-rose-200 hover:bg-rose-200 dark:hover:bg-rose-800 hover:text-rose-950 dark:hover:text-rose-50 disabled:opacity-30 bg-transparent"
                 aria-label="Next page"
               >
                 <ChevronRight className="h-6 w-6" />
@@ -374,7 +381,7 @@ export function BookViewer() {
             </div>
 
             {/* Hints */}
-            <p className="text-center text-xs text-rose-600 mt-2">
+            <p className="text-center text-xs text-rose-600 dark:text-rose-400 mt-2">
               {isSmallDevice ? "Swipe or tap edges to turn pages" : "Click, drag, or use arrow keys to turn pages"}
             </p>
           </>
@@ -382,9 +389,9 @@ export function BookViewer() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-rose-200 bg-rose-50/80">
+      <footer className="border-t border-rose-200 dark:border-rose-800 bg-rose-50/80 dark:bg-rose-950/80 transition-colors duration-500">
         <div className="container mx-auto px-4 py-3">
-          <p className="text-xs text-rose-700 text-center">
+          <p className="text-xs text-rose-700 dark:text-rose-400 text-center">
             <strong>LoveScript</strong> &mdash; A journey into the depths of love, connection, and truth.
           </p>
         </div>

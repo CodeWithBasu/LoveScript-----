@@ -16,7 +16,7 @@ export const BookPage = React.forwardRef<HTMLDivElement, BookPageProps>(({ book,
   return (
     <div
       ref={ref}
-      className="w-full h-full bg-linear-to-br from-rose-50 via-pink-50/50 to-rose-100 p-4 md:p-6 overflow-y-auto [&::-webkit-scrollbar]:hidden relative"
+      className="w-full h-full bg-linear-to-br from-rose-50 via-pink-50/50 to-rose-100 dark:from-rose-950 dark:via-pink-950/50 dark:to-rose-900 p-4 md:p-6 overflow-y-auto [&::-webkit-scrollbar]:hidden relative transition-colors duration-500"
       data-density="soft"
       style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
     >
@@ -29,31 +29,31 @@ export const BookPage = React.forwardRef<HTMLDivElement, BookPageProps>(({ book,
           <img
             src={book.book_cover_image_url || "/placeholder.svg"}
             alt={`Illustration for ${book.title}`}
-            className="w-full h-48 md:h-64 lg:h-72 object-cover rounded-xl shadow-md border-4 border-white pb-0"
+            className="w-full h-48 md:h-64 lg:h-72 object-cover rounded-xl shadow-md border-4 border-white dark:border-rose-900 pb-0 transition-colors duration-500"
             crossOrigin="anonymous"
           />
-          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-rose-600 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg whitespace-nowrap">
+          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-rose-600 dark:bg-rose-700 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg whitespace-nowrap transition-colors duration-500">
             Chapter {index + 1}
           </div>
         </div>
 
         {/* Chapter Title & Meta */}
         <div className="flex flex-col gap-2 text-center shrink min-w-0 w-full px-2 mt-4">
-          <Badge variant="outline" className="mx-auto mb-1 border-rose-300 text-rose-600 bg-white/50 backdrop-blur-sm hover:bg-rose-100 text-[10px] md:text-xs">
+          <Badge variant="outline" className="mx-auto mb-1 border-rose-300 dark:border-rose-700 text-rose-600 dark:text-rose-400 bg-white/50 dark:bg-rose-900/50 backdrop-blur-sm hover:bg-rose-100 dark:hover:bg-rose-800 text-[10px] md:text-xs transition-colors duration-500">
             {book.genre}
           </Badge>
-          <h2 className="font-serif font-bold text-rose-950 leading-tight text-balance text-2xl md:text-3xl lg:text-4xl mt-2">
+          <h2 className="font-serif font-bold text-rose-950 dark:text-rose-100 leading-tight text-balance text-2xl md:text-3xl lg:text-4xl mt-2 transition-colors duration-500">
             {book.title}
           </h2>
-          <p className="text-rose-500 italic text-xs md:text-sm mt-1 mb-2">{book.author}</p>
-          <div className="w-12 h-1 bg-rose-300/50 mx-auto my-1 rounded-full" />
+          <p className="text-rose-500 dark:text-rose-400 italic text-xs md:text-sm mt-1 mb-2 transition-colors duration-500">{book.author}</p>
+          <div className="w-12 h-1 bg-rose-300/50 dark:bg-rose-700/50 mx-auto my-1 rounded-full transition-colors duration-500" />
         </div>
 
         {/* Content Paragraphs */}
         {book.content && book.content.length > 0 && (
-          <div className="flex flex-col gap-5 text-justify w-full px-2 md:px-6 text-rose-900/90 font-serif text-sm md:text-base leading-relaxed tracking-wide">
+          <div className="flex flex-col gap-5 text-justify w-full px-2 md:px-6 text-rose-900/90 dark:text-rose-200/90 font-serif text-sm md:text-base leading-relaxed tracking-wide transition-colors duration-500">
             {book.content.map((paragraph, i) => (
-              <p key={i} className={i === 0 ? "first-letter:text-5xl first-letter:font-bold first-letter:text-rose-500 first-letter:mr-1 first-letter:float-left first-line:uppercase first-line:tracking-widest" : ""}>
+              <p key={i} className={i === 0 ? "first-letter:text-5xl first-letter:font-bold first-letter:text-rose-500 dark:first-letter:text-rose-400 first-letter:mr-1 first-letter:float-left first-line:uppercase first-line:tracking-widest" : ""}>
                 {paragraph}
               </p>
             ))}
@@ -62,7 +62,7 @@ export const BookPage = React.forwardRef<HTMLDivElement, BookPageProps>(({ book,
       </div>
 
       {/* Page number */}
-      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 text-[10px] text-rose-400 font-serif bg-white/50 px-2 rounded-full py-0.5">{pageNumber}</div>
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 text-[10px] text-rose-400 dark:text-rose-500 font-serif bg-white/50 dark:bg-rose-900/50 px-2 rounded-full py-0.5 transition-colors duration-500">{pageNumber}</div>
     </div>
   )
 })
@@ -73,7 +73,7 @@ export const CoverPage = React.forwardRef<HTMLDivElement, { type: "front" | "bac
   return (
     <div
       ref={ref}
-      className="w-full h-full bg-gradient-to-br from-rose-800 via-rose-900 to-rose-950 flex items-center justify-center"
+      className="w-full h-full bg-linear-to-br from-rose-800 via-rose-900 to-rose-950 dark:from-rose-950 dark:via-black dark:to-stone-950 flex items-center justify-center transition-colors duration-500"
       data-density="hard"
     >
       {type === "front" ? (

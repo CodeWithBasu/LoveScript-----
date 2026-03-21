@@ -174,3 +174,10 @@
 .animate-flip-prev {
   animation: flip-prev 0.5s ease-in-out;
 }
+
+/* Animated theme toggler effect */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}

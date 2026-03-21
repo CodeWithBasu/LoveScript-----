@@ -6,7 +6,7 @@ import { Star, ExternalLink } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 
-interface BookPageProps {
+export interface BookPageProps {
   book: Book
   index: number
   pageNumber: number

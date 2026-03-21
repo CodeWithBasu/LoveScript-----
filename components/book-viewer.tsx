@@ -86,7 +86,7 @@ export function BookViewer() {
   const bookHeight = isMobile ? 870 : 1050
 
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-br from-rose-50 via-pink-50 to-red-50">
+    <div className="flex flex-col min-h-screen bg-linear-to-br from-rose-50 via-pink-50 to-red-50">
       {/* Header */}
       <header className="sticky top-0 z-50 backdrop-blur-md bg-rose-50/80 border-b border-rose-200">
         <div className="container mx-auto px-4 py-4">

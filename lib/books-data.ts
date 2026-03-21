@@ -256,7 +256,10 @@ export const books: Book[] = rawData.map((data, index) => {
   }
   
   return {
-    amazon_in_product_url: "#",+
+    amazon_in_product_url: "#",
+    title: `${index + 1}. ${data[2]}`,
+    author: data[0],
+    published_date: "Timeless",
     mrp: null,
     genre: data[1],
     amazon_in_customer_rating: 5.0,

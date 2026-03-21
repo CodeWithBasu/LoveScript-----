@@ -239,16 +239,29 @@ export const books: Book[] = rawData.map((data, index) => {
   const content = [];
   if (data[3]) content.push(data[3]);
   if (data[4]) content.push(data[4]);
+  
+  // Clean the chapter title to see if it matches our specific generated image files
+  const rawTitle = data[2];
+  const safeTitle = rawTitle.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/(^_|_$)/g, '');
+  
+  const specificImages = [
+    'details_of_love', 'how_to_love', 'love_quotes', 
+    'love_vs_attachment', 'what_is_love', 'which_is_love'
+  ];
+  
+  // Decide the image based on specific file availability vs falling back to the 10 core beautiful Parts
+  let imageName = `part${Math.floor(index / 20) + 1}`; 
+  if (specificImages.includes(safeTitle)) {
+    imageName = safeTitle;
+  }
+  
   return {
-    amazon_in_product_url: "#",
-    title: `${index + 1}. ${data[2]}`,
-    author: data[0],
-    published_date: "Timeless",
+    amazon_in_product_url: "#",+
     mrp: null,
     genre: data[1],
     amazon_in_customer_rating: 5.0,
     total_reviews: 1000 + index * 100,
-    book_cover_image_url: `/images/part${Math.floor(index / 20) + 1}.png`,
+    book_cover_image_url: `/images/${imageName}.png`,
     content,
   };
 });

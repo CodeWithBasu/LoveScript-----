@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { BookViewer } from "@/components/book-viewer"
+import { SplashScreen } from "@/components/ui/splash-screen"
 
 export const metadata: Metadata = {
   title: "The Book of Love | Understanding True Love vs Attachment",
@@ -43,6 +44,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
+      <SplashScreen />
       <BookViewer />
     </>
   )

@@ -1,0 +1,17 @@
+{
+  "name": "LoveScript: The Book of Love",
+  "short_name": "LoveScript",
+  "description": "An immersive digital exploration of love, connection, and truth.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fff1f2",
+  "theme_color": "#be123c",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

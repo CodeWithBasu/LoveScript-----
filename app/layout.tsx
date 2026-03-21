@@ -8,25 +8,25 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: 'LoveScript (❤️)',
-  description: 'A romantic and interactive digital diary for couples',
+  description: 'An immersive digital exploration of love, connection, and truth.',
   generator: 'Basudev',
-  icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+  manifest: '/manifest.json',
+  appleWebApp: {
+    title: 'LoveScript',
+    statusBarStyle: 'black-translucent',
+    capable: true,
   },
+  icons: {
+    icon: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
+}
+
+export const viewport = {
+  themeColor: '#be123c',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
 }
 
 export default function RootLayout({

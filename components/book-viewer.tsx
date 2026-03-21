@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo, useRef, useCallback } from "react"
 import dynamic from "next/dynamic"
 import { books as allBooks } from "@/lib/books-data"
 import { BookPage, CoverPage } from "@/components/book-page"
+import { useIsMobile, useIsTablet } from "@/hooks/use-mobile"
 import { ChevronLeft, ChevronRight, Search, X, BookOpen } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -22,16 +23,143 @@ export function BookViewer() {
   const [currentPage, setCurrentPage] = useState(0)
   const [totalPages, setTotalPages] = useState(0)
   const bookRef = useRef<any>(null)
-  const [isMobile, setIsMobile] = useState(false)
+  const flipBufferRef = useRef<AudioBuffer | null>(null)
+  
+  // Real-time Physics Engine references
+  const frictionGainRef = useRef<GainNode | null>(null)
+  const lastXRef = useRef<number | null>(null)
+  const isFoldingRef = useRef(false)
+  const frictionRafRef = useRef<number | null>(null)
+  const audioCtxRef = useRef<AudioContext | null>(null)
 
-  // Check for mobile
+  const isMobile = useIsMobile()
+  const isTablet = useIsTablet()
+  const isSmallDevice = isMobile || isTablet
+
+  // Initialize the sound with Web Audio API for flawless zero-latency playback
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768)
-    checkMobile()
-    window.addEventListener("resize", checkMobile)
-    return () => window.removeEventListener("resize", checkMobile)
+    const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext
+    if (!AudioContextClass) return
+    const ctx = new AudioContextClass()
+    audioCtxRef.current = ctx
+
+    // 1. Load the actual swoosh MP3
+    fetch("/page-flip-sound.mp3")
+      .then((response) => response.arrayBuffer())
+      .then((arrayBuffer) => ctx.decodeAudioData(arrayBuffer))
+      .then((audioBuffer) => {
+        flipBufferRef.current = audioBuffer
+      })
+      .catch((e) => console.log("Failed to safely load or decode audio", e))
+
+    // 2. Set up the dynamic physics "Friction" engine for peeling
+    const bufferSize = ctx.sampleRate * 2.0 // 2 seconds of pure rustle
+    const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate)
+    const data = buffer.getChannelData(0)
+    for (let i = 0; i < bufferSize; i++) {
+      data[i] = (Math.random() * 2 - 1) * 0.3 // Smooth white noise
+    }
+    
+    const noiseSource = ctx.createBufferSource()
+    noiseSource.buffer = buffer
+    noiseSource.loop = true
+    
+    // Filter to make the noise sound exactly like thick sliding paper
+    const filter = ctx.createBiquadFilter()
+    filter.type = "bandpass"
+    filter.frequency.value = 800
+    filter.Q.value = 0.5
+    
+    // Volume controller for the friction
+    const gainNode = ctx.createGain()
+    gainNode.gain.value = 0 // Silent initially until peeling happens
+    frictionGainRef.current = gainNode
+    
+    noiseSource.connect(filter)
+    filter.connect(gainNode)
+    gainNode.connect(ctx.destination)
+    
+    noiseSource.start()
+
+    return () => {
+      ctx.close().catch(() => {})
+      if (frictionRafRef.current) cancelAnimationFrame(frictionRafRef.current)
+    }
   }, [])
 
+  // Listen to physical mouse/touch dragging directly on the document
+  useEffect(() => {
+    const handleMove = (e: MouseEvent | TouchEvent) => {
+      if (!isFoldingRef.current || !audioCtxRef.current || !frictionGainRef.current) return
+      
+      const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX
+      
+      if (lastXRef.current !== null) {
+        const deltaX = Math.abs(clientX - lastXRef.current)
+        
+        // Map cursor speed (deltaX) to paper rustling volume mapping
+        // The faster the pull, the louder the paper friction
+        let targetVolume = Math.min((deltaX / 50) * 0.6, 0.6) 
+        
+        // Smoothly ramp volume to match finger speed
+        frictionGainRef.current.gain.setTargetAtTime(targetVolume, audioCtxRef.current.currentTime, 0.05)
+      }
+      lastXRef.current = clientX
+      
+      // Decay friction instantly if the finger stops moving
+      if (frictionRafRef.current) clearTimeout(frictionRafRef.current)
+      frictionRafRef.current = window.setTimeout(() => {
+        if (frictionGainRef.current && audioCtxRef.current) {
+           frictionGainRef.current.gain.setTargetAtTime(0, audioCtxRef.current.currentTime, 0.1)
+        }
+      }, 50)
+    }
+
+    const handleRelease = () => {
+      isFoldingRef.current = false
+      lastXRef.current = null
+      if (frictionGainRef.current && audioCtxRef.current) {
+        frictionGainRef.current.gain.setTargetAtTime(0, audioCtxRef.current.currentTime, 0.05) // go silent
+      }
+    }
+
+    document.addEventListener("mousemove", handleMove)
+    document.addEventListener("touchmove", handleMove, { passive: true })
+    document.addEventListener("mouseup", handleRelease)
+    document.addEventListener("touchend", handleRelease)
+
+    return () => {
+      document.removeEventListener("mousemove", handleMove)
+      document.removeEventListener("touchmove", handleMove)
+      document.removeEventListener("mouseup", handleRelease)
+      document.removeEventListener("touchend", handleRelease)
+    }
+  }, [])
+
+  const playFlipSound = useCallback((playbackRate: number = 1.0, volume: number = 0.5) => {
+    const ctx = audioCtxRef.current
+    const buffer = flipBufferRef.current
+
+    if (ctx && buffer) {
+      if (ctx.state === "suspended") {
+        ctx.resume()
+      }
+      
+      const source = ctx.createBufferSource()
+      source.buffer = buffer
+      
+      // Control how slow or fast the sound plays to match the peel!
+      source.playbackRate.value = playbackRate
+      
+      const gainNode = ctx.createGain()
+      gainNode.gain.value = volume
+      
+      source.connect(gainNode)
+      gainNode.connect(ctx.destination)
+      
+      source.start(0, 0.05)
+    }
+  }, [])
   const filteredBooks = useMemo(() => {
     if (!searchQuery.trim()) return allBooks
     const query = searchQuery.toLowerCase()
@@ -45,8 +173,11 @@ export function BookViewer() {
 
   // Reset to first page on search
   useEffect(() => {
-    if (bookRef.current) {
-      bookRef.current.pageFlip().turnToPage(0)
+    if (bookRef.current && bookRef.current.pageFlip) {
+      const pageFlipInstance = bookRef.current.pageFlip()
+      if (pageFlipInstance && typeof pageFlipInstance.turnToPage === 'function') {
+        pageFlipInstance.turnToPage(0)
+      }
     }
   }, [searchQuery])
 
@@ -54,21 +185,46 @@ export function BookViewer() {
     setCurrentPage(e.data)
   }, [])
 
+  const handleChangeState = useCallback((e: any) => {
+    // When the user starts slowly grabbing and peeling the corner themselves
+    if (e.data === "user_fold") {
+      isFoldingRef.current = true // Activates the dynamic physical drag engine!
+    }
+    // "flipping" state happens the millisecond the page physically executes its turning animation (snapping over natively)
+    if (e.data === "flipping") {
+      isFoldingRef.current = false
+      lastXRef.current = null
+      if (frictionGainRef.current && audioCtxRef.current) {
+         frictionGainRef.current.gain.setTargetAtTime(0, audioCtxRef.current.currentTime, 0.01)
+      }
+      playFlipSound(1.0, 0.5) // Fire the final true-speed swoosh
+    }
+  }, [playFlipSound])
+
   const handleInit = useCallback((e: any) => {
-    if (bookRef.current) {
-      setTotalPages(bookRef.current.pageFlip().getPageCount())
+    if (bookRef.current && bookRef.current.pageFlip) {
+      const pageFlipInstance = bookRef.current.pageFlip()
+      if (pageFlipInstance && typeof pageFlipInstance.getPageCount === 'function') {
+        setTotalPages(pageFlipInstance.getPageCount())
+      }
     }
   }, [])
 
   const goNext = () => {
-    if (bookRef.current) {
-      bookRef.current.pageFlip().flipNext()
+    if (bookRef.current && bookRef.current.pageFlip) {
+      const pageFlipInstance = bookRef.current.pageFlip()
+      if (pageFlipInstance && typeof pageFlipInstance.flipNext === 'function') {
+        pageFlipInstance.flipNext()
+      }
     }
   }
 
   const goPrev = () => {
-    if (bookRef.current) {
-      bookRef.current.pageFlip().flipPrev()
+    if (bookRef.current && bookRef.current.pageFlip) {
+      const pageFlipInstance = bookRef.current.pageFlip()
+      if (pageFlipInstance && typeof pageFlipInstance.flipPrev === 'function') {
+        pageFlipInstance.flipPrev()
+      }
     }
   }
 
@@ -82,8 +238,8 @@ export function BookViewer() {
     return () => window.removeEventListener("keydown", handleKeyDown)
   }, [])
 
-  const bookWidth = isMobile ? 540 : 720
-  const bookHeight = isMobile ? 870 : 1050
+  const bookWidth = isMobile ? 360 : isTablet ? 560 : 720
+  const bookHeight = isMobile ? 580 : isTablet ? 800 : 1050
 
   return (
     <div className="flex flex-col min-h-screen bg-linear-to-br from-rose-50 via-pink-50 to-red-50">
@@ -144,17 +300,18 @@ export function BookViewer() {
 
               {/* Flip Book */}
               <HTMLFlipBook
+                key={isSmallDevice ? "device-small" : "device-large"}
                 ref={bookRef}
                 width={bookWidth}
                 height={bookHeight}
                 size="stretch"
-                minWidth={420}
-                maxWidth={750}
-                minHeight={600}
-                maxHeight={1050}
+                minWidth={isSmallDevice ? 320 : 420}
+                maxWidth={isSmallDevice ? 800 : 750}
+                minHeight={isSmallDevice ? 480 : 600}
+                maxHeight={1100}
                 drawShadow={true}
                 flippingTime={800}
-                usePortrait={isMobile}
+                usePortrait={isSmallDevice}
                 startPage={0}
                 startZIndex={0}
                 autoSize={true}
@@ -165,6 +322,7 @@ export function BookViewer() {
                 clickEventForward={true}
                 useMouseEvents={true}
                 onFlip={handleFlip}
+                onChangeState={handleChangeState}
                 onInit={handleInit}
                 className="shadow-2xl"
                 style={{}}
@@ -217,7 +375,7 @@ export function BookViewer() {
 
             {/* Hints */}
             <p className="text-center text-xs text-rose-600 mt-2">
-              {isMobile ? "Swipe or tap edges to turn pages" : "Click, drag, or use arrow keys to turn pages"}
+              {isSmallDevice ? "Swipe or tap edges to turn pages" : "Click, drag, or use arrow keys to turn pages"}
             </p>
           </>
         )}

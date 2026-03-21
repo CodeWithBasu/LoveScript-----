@@ -13,85 +13,56 @@ interface BookPageProps {
 }
 
 export const BookPage = React.forwardRef<HTMLDivElement, BookPageProps>(({ book, index, pageNumber }, ref) => {
-  const amazonUrl = book.amazon_in_product_url
-    ? `${book.amazon_in_product_url}${book.amazon_in_product_url.includes("?") ? "&" : "?"}tag=xdotcom-21`
-    : "#"
-
   return (
     <div
       ref={ref}
-      className="w-full h-full bg-gradient-to-br from-amber-50 via-orange-50/50 to-amber-100 p-4 md:p-6 overflow-hidden"
+      className="w-full h-full bg-linear-to-br from-rose-50 via-pink-50/50 to-rose-100 p-4 md:p-6 overflow-y-auto [&::-webkit-scrollbar]:hidden relative"
       data-density="soft"
+      style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
     >
       {/* Paper texture overlay */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZjVmNWY0Ij48L3JlY3Q+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNlN2U1ZTQiPjwvcmVjdD4KPC9zdmc+')] opacity-20 pointer-events-none" />
 
-      {/* Page number */}
-      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 text-xs text-amber-500 font-serif">{pageNumber}</div>
-
-      <div className="flex flex-col items-center justify-center h-full gap-3 md:gap-4 relative">
-        {/* Book Cover - Clickable with just cursor pointer */}
-        <a
-          href={amazonUrl}
-          target="_blank"
-          rel="noopener noreferrer sponsored"
-          className="relative shrink-0 cursor-pointer"
-          aria-label={`View ${book.title} on Amazon (affiliate link)`}
-        >
-          <div className="relative">
-            <img
-              src={book.book_cover_image_url || "/placeholder.svg"}
-              alt={`Cover of ${book.title}`}
-              className="w-32 h-48 md:w-40 md:h-60 lg:w-48 lg:h-72 object-cover rounded-md shadow-2xl"
-              crossOrigin="anonymous"
-            />
-            <div className="absolute top-2 left-2 bg-amber-900/90 text-amber-50 text-xs font-medium px-2 py-1 rounded">
-              #{index + 1}
-            </div>
+      <div className="flex flex-col items-center justify-start h-full gap-6 relative pb-12">
+        {/* Chapter Header Image */}
+        <div className="relative w-full shrink-0">
+          <img
+            src={book.book_cover_image_url || "/placeholder.svg"}
+            alt={`Illustration for ${book.title}`}
+            className="w-full h-48 md:h-64 lg:h-72 object-cover rounded-xl shadow-md border-4 border-white pb-0"
+            crossOrigin="anonymous"
+          />
+          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-rose-600 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg whitespace-nowrap">
+            Chapter {index + 1}
           </div>
-        </a>
-
-        {/* Book Details */}
-        <div className="flex flex-col gap-1.5 text-center flex-shrink min-w-0 w-full px-2">
-          <div>
-            <Badge variant="secondary" className="mb-1 bg-amber-100 text-amber-900 hover:bg-amber-200 text-xs">
-              {book.genre}
-            </Badge>
-            <h2 className="font-serif font-bold text-amber-950 leading-tight text-balance text-sm md:text-base lg:text-lg line-clamp-2">
-              {book.title}
-            </h2>
-            <p className="text-amber-800 text-xs md:text-sm mt-0.5">by {book.author}</p>
-          </div>
-
-          {/* Rating */}
-          <div className="flex items-center justify-center gap-1 flex-wrap">
-            <div className="flex items-center gap-0.5">
-              {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  className={`w-3 h-3 ${
-                    i < Math.floor(book.amazon_in_customer_rating) ? "fill-amber-500 text-amber-500" : "text-amber-300"
-                  }`}
-                />
-              ))}
-            </div>
-            <span className="text-amber-900 font-medium text-xs">{book.amazon_in_customer_rating}</span>
-            <span className="text-amber-600 text-xs">({book.total_reviews.toLocaleString()})</span>
-          </div>
-
-          <Button asChild size="sm" className="bg-amber-900 hover:bg-amber-800 text-amber-50 w-auto mx-auto mt-1">
-            <a
-              href={amazonUrl}
-              target="_blank"
-              rel="noopener noreferrer sponsored"
-              aria-label={`View ${book.title} on Amazon (affiliate link)`}
-            >
-              View on Amazon
-              <ExternalLink className="ml-2 w-3 h-3" />
-            </a>
-          </Button>
         </div>
+
+        {/* Chapter Title & Meta */}
+        <div className="flex flex-col gap-2 text-center shrink min-w-0 w-full px-2 mt-4">
+          <Badge variant="outline" className="mx-auto mb-1 border-rose-300 text-rose-600 bg-white/50 backdrop-blur-sm hover:bg-rose-100 text-[10px] md:text-xs">
+            {book.genre}
+          </Badge>
+          <h2 className="font-serif font-bold text-rose-950 leading-tight text-balance text-2xl md:text-3xl lg:text-4xl mt-2">
+            {book.title}
+          </h2>
+          <p className="text-rose-500 italic text-xs md:text-sm mt-1 mb-2">{book.author}</p>
+          <div className="w-12 h-1 bg-rose-300/50 mx-auto my-1 rounded-full" />
+        </div>
+
+        {/* Content Paragraphs */}
+        {book.content && book.content.length > 0 && (
+          <div className="flex flex-col gap-5 text-justify w-full px-2 md:px-6 text-rose-900/90 font-serif text-sm md:text-base leading-relaxed tracking-wide">
+            {book.content.map((paragraph, i) => (
+              <p key={i} className={i === 0 ? "first-letter:text-5xl first-letter:font-bold first-letter:text-rose-500 first-letter:mr-1 first-letter:float-left first-line:uppercase first-line:tracking-widest" : ""}>
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        )}
       </div>
+
+      {/* Page number */}
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 text-[10px] text-rose-400 font-serif bg-white/50 px-2 rounded-full py-0.5">{pageNumber}</div>
     </div>
   )
 })
@@ -102,36 +73,36 @@ export const CoverPage = React.forwardRef<HTMLDivElement, { type: "front" | "bac
   return (
     <div
       ref={ref}
-      className="w-full h-full bg-gradient-to-br from-amber-800 via-amber-900 to-amber-950 flex items-center justify-center"
+      className="w-full h-full bg-gradient-to-br from-rose-800 via-rose-900 to-rose-950 flex items-center justify-center"
       data-density="hard"
     >
       {type === "front" ? (
         <div className="text-center p-8">
-          <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-amber-100/10 flex items-center justify-center">
-            <svg className="w-10 h-10 text-amber-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-rose-100/10 flex items-center justify-center">
+            <svg className="w-10 h-10 text-rose-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth={1.5}
-                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
               />
             </svg>
           </div>
-          <h1 className="text-2xl md:text-3xl font-serif font-bold text-amber-100 mb-3">Naval&apos;s Library</h1>
-          <p className="text-amber-200/80 text-sm md:text-base max-w-xs mx-auto">
-            A curated collection of books recommended by Naval Ravikant
+          <h1 className="text-2xl md:text-3xl font-serif font-bold text-rose-100 mb-3">The Book of Love</h1>
+          <p className="text-rose-200/80 text-sm md:text-base max-w-xs mx-auto">
+            A profound exploration of love, connection, and truth.
           </p>
-          <div className="mt-8 text-amber-300/60 text-xs">Click or drag to turn pages →</div>
+          <div className="mt-8 text-rose-300/60 text-xs">Click or drag to turn pages →</div>
         </div>
       ) : (
         <div className="text-center p-8">
-          <p className="text-amber-200/80 text-sm md:text-base mb-4">Thank you for exploring</p>
-          <h2 className="text-xl md:text-2xl font-serif font-bold text-amber-100 mb-6">
-            Naval&apos;s Book Recommendations
+          <p className="text-rose-200/80 text-sm md:text-base mb-4">Forever embracing</p>
+          <h2 className="text-xl md:text-2xl font-serif font-bold text-rose-100 mb-6">
+            The Book of Love
           </h2>
-          <p className="text-amber-300/60 text-xs max-w-xs mx-auto">
-            &ldquo;Read what you love until you love to read.&rdquo;
-            <br />— Naval Ravikant
+          <p className="text-rose-300/60 text-xs max-w-xs mx-auto">
+            &ldquo;Love is not an emotion, it is your very existence.&rdquo;
+            <br />— Rumi
           </p>
         </div>
       )}

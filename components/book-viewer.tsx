@@ -11,8 +11,8 @@ import { Input } from "@/components/ui/input"
 const HTMLFlipBook = dynamic(() => import("react-pageflip").then((mod) => mod.default), {
   ssr: false,
   loading: () => (
-    <div className="flex items-center justify-center h-[600px] bg-amber-100/50 rounded-lg">
-      <div className="text-amber-600 animate-pulse">Loading book...</div>
+    <div className="flex items-center justify-center h-[600px] bg-rose-100/50 rounded-lg">
+      <div className="text-rose-600 animate-pulse">Loading book...</div>
     </div>
   ),
 })
@@ -86,35 +86,35 @@ export function BookViewer() {
   const bookHeight = isMobile ? 870 : 1050
 
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100">
+    <div className="flex flex-col min-h-screen bg-gradient-to-br from-rose-50 via-pink-50 to-red-50">
       {/* Header */}
-      <header className="sticky top-0 z-50 backdrop-blur-md bg-amber-50/80 border-b border-amber-200">
+      <header className="sticky top-0 z-50 backdrop-blur-md bg-rose-50/80 border-b border-rose-200">
         <div className="container mx-auto px-4 py-4">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <BookOpen className="w-8 h-8 text-amber-900" />
+              <BookOpen className="w-8 h-8 text-rose-600" />
               <div>
-                <h1 className="text-xl md:text-2xl font-serif font-bold text-amber-950">
-                  Naval&apos;s Book Recommendations
+                <h1 className="text-xl md:text-2xl font-serif font-bold text-rose-950">
+                  The Book of Love
                 </h1>
-                <p className="text-sm text-amber-700">Curated wisdom for wealth and happiness</p>
+                <p className="text-sm text-rose-700">Exploring the deepest emotion in the universe</p>
               </div>
             </div>
             {/* Search */}
             <div className="relative w-full md:w-72">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-amber-600" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-rose-600" />
               <Input
                 type="search"
-                placeholder="Search books, authors, genres..."
+                placeholder="Search chapters..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 pr-10 bg-white/80 border-amber-300 focus-visible:ring-amber-500 text-amber-950 placeholder:text-amber-500"
-                aria-label="Search books"
+                className="pl-10 pr-10 bg-white/80 border-rose-300 focus-visible:ring-rose-500 text-rose-950 placeholder:text-rose-500"
+                aria-label="Search chapters"
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery("")}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-amber-600 hover:text-amber-900"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-rose-600 hover:text-rose-900"
                   aria-label="Clear search"
                 >
                   <X className="w-4 h-4" />
@@ -130,9 +130,9 @@ export function BookViewer() {
         {filteredBooks.length === 0 ? (
           <div className="flex-1 flex items-center justify-center p-8">
             <div className="text-center">
-              <BookOpen className="w-16 h-16 text-amber-300 mx-auto mb-4" />
-              <h2 className="text-xl font-serif text-amber-900">No books found</h2>
-              <p className="text-amber-600 mt-2">Try a different search term</p>
+              <BookOpen className="w-16 h-16 text-rose-300 mx-auto mb-4" />
+              <h2 className="text-xl font-serif text-rose-900">No chapters found</h2>
+              <p className="text-rose-600 mt-2">Try a different search term</p>
             </div>
           </div>
         ) : (
@@ -140,7 +140,7 @@ export function BookViewer() {
             {/* Book Container with shadow */}
             <div className="relative">
               {/* Book shadow */}
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[90%] h-8 bg-amber-900/20 blur-xl rounded-full" />
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[90%] h-8 bg-rose-900/20 blur-xl rounded-full" />
 
               {/* Flip Book */}
               <HTMLFlipBook
@@ -191,16 +191,16 @@ export function BookViewer() {
                 size="icon"
                 onClick={goPrev}
                 disabled={currentPage === 0}
-                className="h-12 w-12 rounded-full border-amber-300 text-amber-900 hover:bg-amber-200 hover:text-amber-950 disabled:opacity-30 bg-transparent"
+                className="h-12 w-12 rounded-full border-rose-300 text-rose-900 hover:bg-rose-200 hover:text-rose-950 disabled:opacity-30 bg-transparent"
                 aria-label="Previous page"
               >
                 <ChevronLeft className="h-6 w-6" />
               </Button>
 
               <div className="flex items-center gap-2 min-w-[120px] justify-center">
-                <span className="text-amber-900 font-serif font-medium text-lg">Page {currentPage + 1}</span>
-                <span className="text-amber-600">/</span>
-                <span className="text-amber-600">{totalPages || filteredBooks.length + 2}</span>
+                <span className="text-rose-900 font-serif font-medium text-lg">Page {currentPage + 1}</span>
+                <span className="text-rose-600">/</span>
+                <span className="text-rose-600">{totalPages || filteredBooks.length + 2}</span>
               </div>
 
               <Button
@@ -208,7 +208,7 @@ export function BookViewer() {
                 size="icon"
                 onClick={goNext}
                 disabled={currentPage >= totalPages - 1}
-                className="h-12 w-12 rounded-full border-amber-300 text-amber-900 hover:bg-amber-200 hover:text-amber-950 disabled:opacity-30"
+                className="h-12 w-12 rounded-full border-rose-300 text-rose-900 hover:bg-rose-200 hover:text-rose-950 disabled:opacity-30"
                 aria-label="Next page"
               >
                 <ChevronRight className="h-6 w-6" />
@@ -216,19 +216,18 @@ export function BookViewer() {
             </div>
 
             {/* Hints */}
-            <p className="text-center text-xs text-amber-600 mt-2">
+            <p className="text-center text-xs text-rose-600 mt-2">
               {isMobile ? "Swipe or tap edges to turn pages" : "Click, drag, or use arrow keys to turn pages"}
             </p>
           </>
         )}
       </main>
 
-      {/* Footer with Affiliate Disclosure */}
-      <footer className="border-t border-amber-200 bg-amber-50/80">
+      {/* Footer */}
+      <footer className="border-t border-rose-200 bg-rose-50/80">
         <div className="container mx-auto px-4 py-3">
-          <p className="text-xs text-amber-700 text-center">
-            <strong>Affiliate Disclosure:</strong> As an Amazon Associate, we earn from qualifying purchases at no extra
-            cost to you. Book recommendations sourced from Naval Ravikant&apos;s public endorsements.
+          <p className="text-xs text-rose-700 text-center">
+            <strong>LoveScript</strong> &mdash; A journey into the depths of love, connection, and truth.
           </p>
         </div>
       </footer>

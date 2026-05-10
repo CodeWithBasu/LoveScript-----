@@ -13,260 +13,274 @@ export interface Book {
   content: string[];
 }
 
-const rawData: [string, string, string, string, string?][] = [
-  // PART 1: Understanding Love
-  ["PART 1: Understanding Love", "Understanding", "What is Love?", "Love is the quiet whisper of the soul finally returning home.", "It is the gentle hands that hold your broken pieces, perfectly unaware of their sharp edges, simply grateful to hold you."],
-  ["PART 1: Understanding Love", "Understanding", "Meaning of Divine Love", "Divine love asks for nothing because it already possesses everything in the act of giving.", "It is a holy surrender, looking past all worldly imperfections to kiss the eternal spark inside another's spirit."],
-  ["PART 1: Understanding Love", "Understanding", "Difference Between Love & Attraction", "Attraction is the loud spark that catches the eye; love is the silent, enduring warmth.", "While the spark may fade with the passing of time, love stays to quietly melt the coldest winters of the heart."],
-  ["PART 1: Understanding Love", "Understanding", "Emotional vs Spiritual Love", "Emotions are the beautiful, unpredictable waves crashing upon the shore of our lives.", "Spiritual love is the profound ocean lying peacefully beneath—constant, unshakeable, holding endless depths of grace."],
-  ["PART 1: Understanding Love", "Understanding", "The Energy of Love", "Love is an invisible frequency, vibrating with absolute compassion and peace.", "When two souls resonate together, the universe momentarily holds its breath to witness their beautiful, quiet harmony."],
-  ["PART 1: Understanding Love", "Understanding", "Love as a Universal Language", "Tears, laughter, and a lingering touch require absolutely no translation.", "Love speaks fluently to the brokenhearted, singing the only song every human spirit inherently knows by heart."],
-  ["PART 1: Understanding Love", "Understanding", "Love Beyond Words", "There is a profoundly sacred silence where true love builds its sanctuary.", "When our most poetic words fail to carry the weight of our affection, a simple glance across the room says everything."],
-  ["PART 1: Understanding Love", "Understanding", "Love and the Soul", "The wandering soul desperately seeks an anchor in a chaotic sea; love provides the harbor.", "To love is to intricately weave your deepest essence with another, creating a permanent shelter of belonging."],
-  ["PART 1: Understanding Love", "Understanding", "Why Humans Seek Love", "We are ancient stardust scattered across the skies, forever longing to reunite.", "We search for love effortlessly because it is our memory of genuine wholeness, the missing half of our divine origin."],
-  ["PART 1: Understanding Love", "Understanding", "Love vs Attachment", "Attachment clenches its fist, terrified of watching the beautiful flower wither in the wind.", "Love opens its palm completely. It offers sunlight and absolute freedom, knowing devotion cannot grow in a cage."],
-  ["PART 1: Understanding Love", "Understanding", "Pure Love vs Conditional Love", "Conditional love bargains: 'I will hold you only while you remain perfectly unbroken.'", "Pure love promises: 'I will sit with you in your darkest ruins, until the dawn softly returns to your eyes.'"],
-  ["PART 1: Understanding Love", "Understanding", "The Science of Love (feelings & mind)", "The brain orchestrates the brilliant fireworks of infatuation, painting the skies with temporary bliss.", "But the heart painstakingly lays the quiet, heavy bricks of devotion, choosing them deliberately every single morning."],
-  ["PART 1: Understanding Love", "Understanding", "Love in Silence", "The most beautiful conversations happen long after the exhausting talking ceases entirely.", "It is the soft sound of two rhythmic breaths synchronizing in the dark, finding absolute comfort in mere presence."],
-  ["PART 1: Understanding Love", "Understanding", "Love and Time", "Time violently steals our youth, leaving fragile lines upon our faces, but it profoundly bows to true love.", "For love weaves time into a golden tapestry of shared history, making growing old the greatest privilege of all."],
-  ["PART 1: Understanding Love", "Understanding", "Love and Destiny", "We do not meet by accident; the universe meticulously planned our quiet collision.", "Love is the invisible, golden thread beautifully orchestrating two wandering strangers falling inevitably into step."],
-  ["PART 1: Understanding Love", "Understanding", "Can Love Be Defined?", "Attempting to completely define love is like trying to trap a brilliant sunset in a tiny glass jar.", "It is boundless— appearing as fiery passion in youth, patient endurance in sorrow, and profound peace in old age."],
-  ["PART 1: Understanding Love", "Understanding", "The Depth of True Love", "True love does not cowardly shy away from the deeply hidden, terrifying shadows.", "It steps gently into the most fiercely protected, broken corridors of the heart, softly whispering: 'You are safe here.'"],
-  ["PART 1: Understanding Love", "Understanding", "Love as a Feeling vs Choice", "Feelings are the unpredictable weather; choice is the unshakeable house you build against the storm.", "Loving someone gracefully when the emotional skies are gray is humanity's highest act of poetic devotion."],
-  ["PART 1: Understanding Love", "Understanding", "Love in Different Cultures", "Different customs, beautifully diverse songs, distinctly spoken words, but exactly the same heartbeat.", "The undeniable desire to fiercely protect and deeply cherish another is the singular golden thread connecting all mankind."],
-  ["PART 1: Understanding Love", "Understanding", "Final Truth of Love", "The final, quiet truth: Love is flawlessly the beginning and entirely the end of all things.", "We enter this earth desperately crying out for it, and leave simply praying to be beautifully remembered by it."],
+export const bookData = {
+  bookTitle: "LoveScript: Words of Wisdom",
+  totalChapters: 30,
+  parts: [
+    {
+      part: "Part 1: Timeless Quotes",
+      chapters: [
+        {
+          id: 1,
+          title: "Quote by Oscar Wilde",
+          author: "Oscar Wilde",
+          tags: "attributednosource, beyourself, gilbertperreira, honesty, inspirational, misattributedoscarwilde, quoteinvestigator",
+          image: "love_quotes",
+          content: ["Be yourself; everyone else is already taken."]
+        },
+        {
+          id: 2,
+          title: "Quote by Marilyn Monroe",
+          author: "Marilyn Monroe",
+          tags: "attributednosource, best, life, love, mistakes, outofcontrol, truth, worst",
+          image: "love_quotes",
+          content: ["I'm selfish, impatient and a little insecure. I make mistakes, I am out of control and at times hard to handle. But if you can't handle me at my worst, then you sure as hell don't deserve me at my best."]
+        },
+        {
+          id: 3,
+          title: "Quote by Albert Einstein",
+          author: "Albert Einstein",
+          tags: "attributednosource, humannature, humor, infinity, philosophy, science, stupidity, universe",
+          image: "love_quotes",
+          content: ["Two things are infinite: the universe and human stupidity; and I'm not sure about the universe."]
+        },
+        {
+          id: 4,
+          title: "Quote by Frank Zappa",
+          author: "Frank Zappa",
+          tags: "books, humor",
+          image: "love_quotes",
+          content: ["So many books, so little time."]
+        },
+        {
+          id: 5,
+          title: "Quote by Marcus Tullius Cicero",
+          author: "Marcus Tullius Cicero",
+          tags: "attributednosource, books, simile, soul",
+          image: "love_quotes",
+          content: ["A room without books is like a body without a soul."]
+        },
+        {
+          id: 6,
+          title: "Quote by Bernard M. Baruch",
+          author: "Bernard M. Baruch",
+          tags: "ataraxy, beyourself, confidence, fittingin, individuality, misattributeddrseuss, thosewhomatter",
+          image: "love_quotes",
+          content: ["Be who you are and say what you feel, because those who mind don't matter, and those who matter don't mind."]
+        },
+        {
+          id: 7,
+          title: "Quote by William W. Purkey",
+          author: "William W. Purkey",
+          tags: "dance, heaven, hurt, inspirational, life, love, sing",
+          image: "love_quotes",
+          content: ["You've gotta dance like there's nobody watching,Love like you'll never be hurt,Sing like there's nobody listening,And live like it's heaven on earth."]
+        },
+        {
+          id: 8,
+          title: "Quote by Dr. Seuss",
+          author: "Dr. Seuss",
+          tags: "attributednosource, dreams, love, reality, sleep",
+          image: "love_quotes",
+          content: ["You know you're in love when you can't fall asleep because reality is finally better than your dreams."]
+        },
+        {
+          id: 9,
+          title: "Quote by Mae West",
+          author: "Mae West",
+          tags: "humor, life",
+          image: "love_quotes",
+          content: ["You only live once, but if you do it right, once is enough."]
+        },
+        {
+          id: 10,
+          title: "Quote by Mahatma Gandhi",
+          author: "Mahatma Gandhi",
+          tags: "action, change, inspirational, philosophy, wish",
+          image: "love_quotes",
+          content: ["Be the change that you wish to see in the world."]
+        },
+        {
+          id: 11,
+          title: "Quote by Robert Frost",
+          author: "Robert Frost",
+          tags: "life",
+          image: "love_quotes",
+          content: ["In three words I can sum up everything I've learned about life: it goes on."]
+        },
+        {
+          id: 12,
+          title: "Quote by Harry Potter and the Goblet of Fire",
+          author: "Harry Potter and the Goblet of Fire",
+          tags: "fromcharlesbayardmitchell",
+          image: "love_quotes",
+          content: ["If you want to know what a man's like, take a good look at how he treats his inferiors, not his equals."]
+        },
+        {
+          id: 13,
+          title: "Quote by Albert Camus",
+          author: "Albert Camus",
+          tags: "attributednosource, friends, friendship, misattributedalbertcamus",
+          image: "love_quotes",
+          content: ["Donâ€™t walk in front of meâ€¦ I may not followDonâ€™t walk behind meâ€¦ I may not leadWalk beside meâ€¦ just be my friend"]
+        },
+        {
+          id: 14,
+          title: "Quote by Mark Twain",
+          author: "Mark Twain",
+          tags: "lies, lying, memory, truth",
+          image: "love_quotes",
+          content: ["If you tell the truth, you don't have to remember anything."]
+        },
+        {
+          id: 15,
+          title: "Quote by The Four Loves",
+          author: "The Four Loves",
+          tags: "friendship",
+          image: "love_quotes",
+          content: ["Friendship ... is born at the moment when one man says to another \"What! You too? I thought that no one but myself . . ."]
+        },
+        {
+          id: 16,
+          title: "Quote by Maya Angelou",
+          author: "Maya Angelou",
+          tags: "friend, friendship, knowledge, love",
+          image: "love_quotes",
+          content: ["I've learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel."]
+        },
+        {
+          id: 17,
+          title: "Quote by Elbert Hubbard",
+          author: "Elbert Hubbard",
+          tags: "friend, friendship, knowledge, love",
+          image: "love_quotes",
+          content: ["A friend is someone who knows all about you and still loves you."]
+        },
+        {
+          id: 18,
+          title: "Quote by Oscar Wilde",
+          author: "Oscar Wilde",
+          tags: "life",
+          image: "love_quotes",
+          content: ["To live is the rarest thing in the world. Most people exist, that is all."]
+        },
+        {
+          id: 19,
+          title: "Quote by Oscar Wilde",
+          author: "Oscar Wilde",
+          tags: "attributednosource, enemies, forgiveness, strategy",
+          image: "love_quotes",
+          content: ["Always forgive your enemies; nothing annoys them so much."]
+        },
+        {
+          id: 20,
+          title: "Quote by Mahatma Gandhi",
+          author: "Mahatma Gandhi",
+          tags: "carpediem, education, inspirational, learning",
+          image: "love_quotes",
+          content: ["Live as if you were to die tomorrow. Learn as if you were to live forever."]
+        },
+        {
+          id: 21,
+          title: "Quote by A Testament of Hope: The Essential Writings and Speeches",
+          author: "A Testament of Hope: The Essential Writings and Speeches",
+          tags: "darkness, driveout, hate, inspirational, light, love, peace",
+          image: "love_quotes",
+          content: ["Darkness cannot drive out darkness: only light can do that. Hate cannot drive out hate: only love can do that."]
+        },
+        {
+          id: 22,
+          title: "Quote by The Perks of Being a Wallflower",
+          author: "The Perks of Being a Wallflower",
+          tags: "inspirational, love",
+          image: "love_quotes",
+          content: ["We accept the love we think we deserve."]
+        },
+        {
+          id: 23,
+          title: "Quote by Twilight of the Idols",
+          author: "Twilight of the Idols",
+          tags: "inspirational, music, philosophy",
+          image: "love_quotes",
+          content: ["Without music, life would be a mistake."]
+        },
+        {
+          id: 24,
+          title: "Quote by The Happy Prince and Other Stories",
+          author: "The Happy Prince and Other Stories",
+          tags: "intelligence, selfdeprecation",
+          image: "love_quotes",
+          content: ["I am so clever that sometimes I don't understand a single word of what I am saying."]
+        },
+        {
+          id: 25,
+          title: "Quote by Ralph Waldo Emerson",
+          author: "Ralph Waldo Emerson",
+          tags: "accomplishment, attributednosource, beyourself, conformity, individuality",
+          image: "love_quotes",
+          content: ["To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment."]
+        },
+        {
+          id: 26,
+          title: "Quote by Rob Siltanen",
+          author: "Rob Siltanen",
+          tags: "advertising, apple, change, commercial, computers, different, madness, misattributedapple, misattributedstevejobs, misfits, nonconformity, progressive, rebels, statusquo, thinkdifferent, troublemakers",
+          image: "love_quotes",
+          content: ["Here's to the crazy ones. The misfits. The rebels. The troublemakers. The round pegs in the square holes. The ones who see things differently. They're not fond of rules. And they have no respect for the status quo. You can quote them, disagree with them, glorify or vilify them. About the only thing you can't do is ignore them. Because they change things. They push the human race forward. And while some may see them as the crazy ones, we see genius. Because the people who are crazy enough to think they can change the world, are the ones who do."]
+        },
+        {
+          id: 27,
+          title: "Quote by Narcotics Anonymous",
+          author: "Narcotics Anonymous",
+          tags: "humor, insanity, life, misattributedbenfranklin, misattributedmarktwain, misattributedtoeinstein",
+          image: "love_quotes",
+          content: ["Insanity is doing the same thing, over and over again, but expecting different results."]
+        },
+        {
+          id: 28,
+          title: "Quote by Marilyn Monroe",
+          author: "Marilyn Monroe",
+          tags: "attributednosource, misattributedmarilynmonroe",
+          image: "love_quotes",
+          content: ["I believe that everything happens for a reason. People change so that you can learn to let go, things go wrong so that you appreciate them when they're right, you believe lies so you eventually learn to trust no one but yourself, and sometimes good things fall apart so better things can fall together."]
+        },
+        {
+          id: 29,
+          title: "Quote by Autumn Leaves",
+          author: "Autumn Leaves",
+          tags: "life, love",
+          image: "love_quotes",
+          content: ["It is better to be hated for what you are than to be loved for what you are not."]
+        },
+        {
+          id: 30,
+          title: "Quote by P.S. I Love You",
+          author: "P.S. I Love You",
+          tags: "actions, disappointed, disappointment, dream, dreams, explore, misattributedmarktwain, sail",
+          image: "love_quotes",
+          content: ["Twenty years from now you will be more disappointed by the things that you didn't do than by the ones you did do. So throw off the bowlines. Sail away from the safe harbor. Catch the trade winds in your sails. Explore. Dream. Discover."]
+        }
+      ]
+    }
+  ]
+};
 
-  // PART 2: Origin of Love
-  ["PART 2: Origin of Love", "Origin", "When Did Love Begin?", "Love existed beautifully in the dark, long before the first stars dared to ignite.", "It began the very moment consciousness split, instantly longing with immense poetry to softly return to the embrace of one."],
-  ["PART 2: Origin of Love", "Origin", "Is Love Created or Eternal?", "Love is never aggressively manufactured, nor can it be tragically destroyed by time.", "It is the ancient, breathing rhythm of the cosmos; we simply tune our fragile hearts to its eternal, majestic frequency."],
-  ["PART 2: Origin of Love", "Origin", "Radha–Krishna: Eternal Love Story", "Radha is the profoundly longing soul; Krishna is the delightfully playful, infinite divine.", "Their magnificent story isn't about earthly possession, but the absolute, ecstatic surrender of a heart hopelessly returning to God."],
-  ["PART 2: Origin of Love", "Origin", "Love in Mythology", "Oceans were boldly crossed, and death itself was frequently defied for the sake of love.", "Throughout all ancient myths, love remains the singular magic powerful enough to effortlessly rewrite the laws of the universe."],
-  ["PART 2: Origin of Love", "Origin", "Love and Creation of Universe", "The universe was not fundamentally born from cold, unfeeling celestial mechanics.", "It was a burst of spectacular, creative warmth—the silent desire of the void to beautifully experience itself in the mirror of life."],
-  ["PART 2: Origin of Love", "Origin", "Divine Masculine & Feminine", "Fierce strength beautifully meeting gentle surrender; sharp logic softening into deep intuition.", "The universe dances perfectly only when these two majestic forces softly lock hands, creating an exquisitely balanced harmony."],
-  ["PART 2: Origin of Love", "Origin", "Why Souls Attract Each Other", "We are scattered puzzle pieces mysteriously traversing a chaotic, noisy timeline.", "Souls attract deeply because they intuitively recognize their missing symmetry, effortlessly drawn together in the most crowded rooms."],
-  ["PART 2: Origin of Love", "Origin", "Destiny and Love", "You do not walk blindly or accidentally toward the love of your life.", "Every tragic heartbreak and every lonely tear was a beautifully orchestrated step upon the staircase leading directly to their open arms."],
-  ["PART 2: Origin of Love", "Origin", "First Sight vs Deep Love", "First sight is the sudden, beautiful lightning strike; deep love is the slow, majestic oak.", "One brilliantly illuminates the dark sky for a second, whilst the other provides peaceful, unwavering shelter for a lifetime."],
-  ["PART 2: Origin of Love", "Origin", "The Role of Karma in Love", "We inevitably meet those our souls have ancient, unfinished business with.", "Love acts as the great cleanser, beautifully turning past karmic debts into deep, breathtaking bonds of selfless adoration."],
-  ["PART 2: Origin of Love", "Origin", "Love Across Lifetimes", "I have undeniably loved your spirit in a thousand completely different shapes and times.", "Bodies wonderfully decay, but the profound, echoing resonance of your soul is a melody my heart will sing forever."],
-  ["PART 2: Origin of Love", "Origin", "Soulmate Concept", "A soulmate is rarely a flawless person arriving simply to fix your broken life.", "They are a beautiful, pristine mirror—arriving to show you everything spectacular and deeply hidden you have been keeping from yourself."],
-  ["PART 2: Origin of Love", "Origin", "Twin Flame Concept", "Twin flames are the fierce, terrifyingly beautiful fire that entirely burns away the ego.", "They challenge our deepest fears, breaking us wide open so the soul can magnificently evolve into its most brilliant light."],
-  ["PART 2: Origin of Love", "Origin", "Spiritual Bonding", "Two quiet minds effortlessly conversing across vast distances without a single sound.", "When spirits truly bond, proximity holds absolutely no power; you can feel their subtle smile from entirely across the ocean."],
-  ["PART 2: Origin of Love", "Origin", "Love Beyond Birth & Death", "The quiet grave is an illusion that merely changes the temporary clothing of the soul.", "The connection between deeply loving spirits exists loudly and beautifully in the great, infinite silence of eternity."],
-  ["PART 2: Origin of Love", "Origin", "Love as Divine Plan", "No fateful glance across an empty room is ever a mere coincidence.", "The divine architect beautifully weaves two lonely lives together precisely in the exact moment both are ready to heal each other."],
-  ["PART 2: Origin of Love", "Origin", "Love and Consciousness", "Love is the absolute highest, most breathtaking expression of awake human consciousness.", "To gently love another is to leave the selfish survival of the earth and touch the profoundly peaceful heights of heaven."],
-  ["PART 2: Origin of Love", "Origin", "Cosmic Connection", "We are ancient, weary stardust seeking the exact constellation we fell from.", "When you look deeply into their familiar eyes, you beautifully realize your love story was written softly in the silent stars."],
-  ["PART 2: Origin of Love", "Origin", "Love as God’s Expression", "God cannot be physically held by our fragile, human hands.", "But when you unconditionally, fiercely care for another living soul, you gracefully become the breathing, vivid manifestation of His heart."],
-  ["PART 2: Origin of Love", "Origin", "Beginning of Your Love Story", "The most beautiful romances elegantly begin silently inside your own spirit.", "Before you can deeply embrace another, you must realize the profound love you search for has been softly resting within you."],
-
-  // PART 3: Falling in Love
-  ["PART 3: Falling in Love", "Falling", "First Feeling of Love", "It washes over you like a sudden, magnificently warm sunrise after years of winter.", "The chaotic noise of the busy world mutes, and everything beautifully aligns in the sheer comfort of their sudden presence."],
-  ["PART 3: Falling in Love", "Falling", "Signs You Are in Love", "A simple notification from them holds the breathtaking weight of a handwritten letter.", "You find traces of their spirit in your favorite songs, the scent of quiet rain, and the softest corners of your mind."],
-  ["PART 3: Falling in Love", "Falling", "Emotional Changes in Love", "You suddenly become beautifully, wonderfully fragile to the world.", "Your emotional spectrum extends beyond limits; their joy lifts you to the clouds, and their quiet tears uniquely heavy your chest."],
-  ["PART 3: Falling in Love", "Falling", "Physical Reactions of Love", "A suddenly racing pulse, flushed warm cheeks, and a breathtaking lightness in the lungs.", "The physical body frantically scrambles to beautifully translate the massive, electrical surge of a soul rapidly expanding."],
-  ["PART 3: Falling in Love", "Falling", "Thinking About Someone Constantly", "They effortlessly become the gentle, silent background music of your entire existence.", "No matter what meaningless task occupies your hands, the deep undercurrent of your thoughts flows gracefully back to their smile."],
-  ["PART 3: Falling in Love", "Falling", "Missing Someone Without Reason", "An ache that feels oddly, beautifully akin to profound comfort.", "It is the sweet realization that a piece of your spirit has safely packed its bags and settled permanently inside someone else."],
-  ["PART 3: Falling in Love", "Falling", "Love vs Infatuation", "Fragile infatuation competitively sprints; deep, unshakeable love patiently walks.", "Infatuation obsesses over what they can give you today; love is endlessly fascinated by who they are slowly, beautifully becoming."],
-  ["PART 3: Falling in Love", "Falling", "Obsession vs Love", "Obsession tragically demands a tightly closed fist, constantly terrified of the exit.", "Love opens the door wide to the wind. It simply chooses to sit peacefully and genuinely enjoy the beautiful breeze while it stays."],
-  ["PART 3: Falling in Love", "Falling", "Love and Vulnerability", "Taking off your heavy armor and silently praying they have not brought a sword.", "Falling in love requires the terrifying, breathtaking bravery of handing someone the map leading directly to all your hidden, broken pieces."],
-  ["PART 3: Falling in Love", "Falling", "Opening Your Heart", "It feels exactly like unlocking securely bolted doors to let the fresh spring air rush in.", "After long years of self-defense, allowing sudden warmth to delicately flood the cold corridors of your heart is sheer courage."],
-  ["PART 3: Falling in Love", "Falling", "Fear of Falling in Love", "We stubbornly avoid the dizzying heights solely because we painfully remember the fall.", "But remaining heavily on the ground keeps you perfectly safe at the devastating cost of never knowing how beautiful it is to fly."],
-  ["PART 3: Falling in Love", "Falling", "Trust in Love", "Trust is the delicate wooden bridge built gracefully over a massive canyon of doubt.", "You walk it slowly, one blind step at a time, trusting fiercely their gentle hands will catch you if the wood breaks."],
-  ["PART 3: Falling in Love", "Falling", "Love and Overthinking", "The exhausted, anxious mind often panics in the rare, beautiful presence of peace.", "It attempts to manufacture chaos, simply because absolute, unshakeable bliss feels dangerously suspicious the first time you hold it."],
-  ["PART 3: Falling in Love", "Falling", "Communication in Love", "Speaking loudly is incredibly easy; silently understanding is a profound craft.", "True communication is listening entirely to the deep hurt hidden beautifully beneath their anger, responding strictly to the silent pain."],
-  ["PART 3: Falling in Love", "Falling", "Respect in Love", "Love existing without deep respect is simply a beautifully burning building.", "Respect is the unshakeable foundation that keeps wild passion from turning into ashes; it honors boundaries and cherishes differences."],
-  ["PART 3: Falling in Love", "Falling", "Boundaries in Love", "Drawing a boundary is a poetic way to softly say: 'This is where I end and you perfectly begin.'", "Healthy lines protect the fragile relationship, ensuring neither beautiful soul is tragically drowned by the other's heavy waves."],
-  ["PART 3: Falling in Love", "Falling", "Growth Through Love", "Love is a magnificent, gently burning crucible of the spirit.", "It burns softly away the selfish, stubborn layers of the ego, leaving behind a magnificently polished, deeply empathetic soul."],
-  ["PART 3: Falling in Love", "Falling", "When Love Feels Peaceful", "It gracefully ceases to be an anxious storm of butterflies, settling into a deep, quiet exhale.", "You sit comfortably in the absolute silence, realizing that complete safety is infinitely more romantic than chaotic adrenaline."],
-  ["PART 3: Falling in Love", "Falling", "When Love Feels Intense", "It strikes like a sudden, torrential rainstorm of pure, unending longing.", "It boldly asks everything of you, rattling your emotional cages and stretching your capacity to deeply feel until you wonderfully burst."],
-  ["PART 3: Falling in Love", "Falling", "Accepting Love", "The absolute hardest internal battle is genuinely believing you are worthy of being held.", "Accepting love means silencing the ancient voices that deemed you unlovable, and bravely stepping into the magnificent, waiting warmth."],
-
-  // PART 4: How to Love
-  ["PART 4: How to Love", "How to Love", "Loving Without Expectations", "True, profound giving beautifully expects absolutely nothing in return.", "It is the purest art form: tenderly watering a delicate flower simply because it deserves to bloom, not because you wish to possess it."],
-  ["PART 4: How to Love", "How to Love", "Giving vs Taking", "The transaction of the ego is a coldly calculated, miserable trade of favors.", "The magnificent economy of love is completely unbalanced, where both parties relentlessly out-give one another, resting in infinite abundance."],
-  ["PART 4: How to Love", "How to Love", "Listening in Love", "Listening is the profoundly silent, beautiful act of actively loving.", "It is putting the heavy world down and providing the holy, undisturbed sanctuary of your completely undivided, gentle attention."],
-  ["PART 4: How to Love", "How to Love", "Supporting Your Partner", "You beautifully become the quiet architecture they heavily rest upon when exhausted.", "It is standing fiercely by their side against the screaming gale of the world, offering an unwavering, gentle pillar of strength."],
-  ["PART 4: How to Love", "How to Love", "Understanding Emotions", "Behind every chaotic, frustrated reaction is an ancient, terribly fragile root.", "Instead of reacting to their loud anger, true love gently unearths the soil to kiss the hidden fear silently living beneath it."],
-  ["PART 4: How to Love", "How to Love", "Being Present", "The absolute only place love genuinely breathes is in the sacred 'now'.", "Anxiety lives in the distant future. To love is to smoothly pull someone directly into the beautiful, magnificent gravity of this exact moment."],
-  ["PART 4: How to Love", "How to Love", "Love Through Actions", "A thousand poetic 'I love yous' easily vanish in the evening wind.", "But making their favorite tea when they are exhausted builds an unshakeable fortress of trust, beautifully placed brick by silent brick."],
-  ["PART 4: How to Love", "How to Love", "Love Through Words", "Our fragile words hold the raw, immense power of both creation and destruction.", "A well-placed sentence, sincere and deeply observant, can wonderfully mend a weary spirit fractured severely by a hundred chaotic days."],
-  ["PART 4: How to Love", "How to Love", "Love Languages", "We often pour out love exactly how we most desperately wish to receive it.", "True wisdom is learning to drop your native tongue to exquisitely speak to their soul in the exact language it beautifully understands."],
-  ["PART 4: How to Love", "How to Love", "Forgiveness in Love", "Holding a dark grudge is drinking bitter poison expecting the other to tragically perish.", "Forgiveness wipes the tear-stained slate clean, refusing to let yesterday's cold shadow eclipse tomorrow's magnificent sunlight."],
-  ["PART 4: How to Love", "How to Love", "Patience in Love", "Genuine, lasting growth takes a terrifying, agonizing amount of time.", "Patience is watering a silent seed for months, beautifully trusting that magnificent roots are expanding gracefully in the deep dark."],
-  ["PART 4: How to Love", "How to Love", "Kindness in Love", "Kindness is the absolute refusal to be cruel simply because you possess the upper hand.", "It is speaking softly when frustrated, choosing magnificent grace when justified anger aggressively tempts you to shout."],
-  ["PART 4: How to Love", "How to Love", "Sacrifice in Love", "It is absolutely not a tragic loss of self; it is a stunning redirection of resources.", "To beautifully sacrifice for love is to joyfully surrender a piece of comfort for the massive, brilliant expansion of their happiness."],
-  ["PART 4: How to Love", "How to Love", "Trust Building", "Trust is meticulously constructed in terrifying, tiny moments of extreme vulnerability.", "Every time they hand you a fragile, trembling piece of their fear and you softly protect it, you mortar another indestructible brick."],
-  ["PART 4: How to Love", "How to Love", "Loyalty in Love", "Loyalty is a profoundly beautiful choice executed strictly in totally empty rooms.", "It is remaining undeniably, fiercely faithful to the connection when entirely unobserved, honoring them as a core aspect of your living integrity."],
-  ["PART 4: How to Love", "How to Love", "Respecting Freedom", "Do not grip so desperately tightly that you tragically crush the fragile flower.", "Respecting their infinite freedom gives them the beautiful space to breathe, effortlessly choosing you every single day by their own free will."],
-  ["PART 4: How to Love", "How to Love", "Avoiding Toxic Love", "Poison tragically often tastes exquisitely sweet at the very first sip.", "We must bravely walk away from the chaotic highs that deeply exhaust the spirit, beautifully refusing to ever confuse sharp pain for passion."],
-  ["PART 4: How to Love", "How to Love", "Healthy Love Habits", "Consistent, profoundly quiet, beautiful tending to the delicate garden.", "It is the small, daily touches, the soft check-ins, and the intentional, majestic effort to never take their fragile presence for granted."],
-  ["PART 4: How to Love", "How to Love", "Growing Together", "We all change violently and unexpectedly over the long, passing years.", "Growing together uniquely means giving each other the total, beautiful permission to endlessly evolve, falling beautifully in love with every new version."],
-  ["PART 4: How to Love", "How to Love", "Becoming Love", "Eventually, love completely ceases to be an action you simply 'do'.", "You become utterly absorbed in the glowing vibration of compassion, walking through the hurting world entirely as an instrument of His grace."],
-
-  // PART 5: Pain & Separation
-  ["PART 5: Pain & Separation", "Pain", "Why Love Hurts", "Because immense joy and devastating pain heavily rely on the exact same depth of heart.", "You cannot expose your spirit to the warmest sun without opening yourself completely to the absolute, tragic devastation of winter."],
-  ["PART 5: Pain & Separation", "Pain", "Expectations and Pain", "Heavy, unspoken expectation is the tragic root of all relational suffering.", "We painstakingly draft scripts for them, and when they deviate, our fragile illusion breaks, resulting in profoundly devastating disappointment."],
-  ["PART 5: Pain & Separation", "Pain", "Heartbreak", "It feels terribly, agonizingly akin to deeply mourning the physically dead.", "The heavy, leaden shock that someone inextricably woven into your daily existence has abruptly become merely a distant, haunting memory."],
-  ["PART 5: Pain & Separation", "Pain", "Moving On", "Moving on is gracefully not about violently forcing yourself to forget.", "It is delicately packing their precious memory into a beautiful box on the shelf, rather than dragging it aggressively through your present."],
-  ["PART 5: Pain & Separation", "Pain", "Healing After Love", "Healing is a chaotic, infuriatingly non-linear, twisting journey.", "Some days you beautifully climb mountains; other days a fragile, soft song destroys your defenses and throws you back to the tears."],
-  ["PART 5: Pain & Separation", "Pain", "Letting Go", "An active, agonizing unclenching of the soul's desperate, tight grip.", "To beautifully let go is realizing that tightly gripping a rope made of fire burns you distinctly more than surrendering to the fall."],
-  ["PART 5: Pain & Separation", "Pain", "Unrequited Love", "Tragically pouring vast, beautiful oceans of water into an entirely sealed vessel.", "The agonizing beauty of giving your entire, magnificent essence to someone who physically cannot comprehend the depth of your sacrifice."],
-  ["PART 5: Pain & Separation", "Pain", "Long Distance Love", "Loving fiercely through cold glowing screens and spanning massive timezones.", "It perfectly forces the connection into the pure realm of the spirit; you must hold their soul because your hands cannot touch their skin."],
-  ["PART 5: Pain & Separation", "Pain", "Missing Someone Deeply", "A devastating, beautifully painful phantom limb of the heavily beating heart.", "You continually reach out in the darkness to softly trace the warm shoulder that hasn't occupied your bed for over a year."],
-  ["PART 5: Pain & Separation", "Pain", "Overcoming Loss", "The terrifying void inside you never fully shrinks or goes away.", "Instead, you heroically build a vastly larger, beautiful life around the crater, gracefully letting time cultivate green grass over the heavy ash."],
-  ["PART 5: Pain & Separation", "Pain", "Emotional Healing", "It requires the unimaginable bravery to simply sit still inside the burning fire.", "You cannot rush it. You must feel every terrifying inch of the agony until the flames eventually exhaust their own oxygen completely."],
-  ["PART 5: Pain & Separation", "Pain", "Self-Recovery", "You slowly, tearfully remember exactly who you were before they arrived.", "You meticulously dust off your old, abandoned passions, and finally grant yourself the massive love you relentlessly poured into them."],
-  ["PART 5: Pain & Separation", "Pain", "Finding Strength Again", "True strength is never about aggressively avoiding the act of crying.", "Strength is falling completely apart on the floor at midnight, wiping your tears in the morning light, and bravely, beautifully showing up again."],
-  ["PART 5: Pain & Separation", "Pain", "Love After Pain", "It is terrifyingly difficult to tear down the incredibly thick, rebuilt walls.", "But love after profound pain is exquisitely tragic and beautiful, given with eyes wide open to the catastrophic, magnificent risks involved."],
-  ["PART 5: Pain & Separation", "Pain", "Learning From Breakups", "Every tragic ending is a harsh, brutal graduation for the evolving spirit.", "They gracefully teach you exactly what you cannot tolerate, what your soul desperately needs, and where you failed to genuinely protect yourself."],
-  ["PART 5: Pain & Separation", "Pain", "Forgiving Yourself", "We endlessly torture ourselves with a million 'what ifs' and 'if onlys'.", "Forgiving yourself beautifully means acknowledging you loved them the absolute best way you knew how with the fragile tools you held."],
-  ["PART 5: Pain & Separation", "Pain", "Accepting Reality", "The agonizing internal battle ends the moment you drop the heavy sword of denial.", "Accepting reality is looking directly into the terrible void of their absence and whispering the terrifying words: 'It is actually over.'"],
-  ["PART 5: Pain & Separation", "Pain", "Inner Peace After Love", "Eventually, the raging, violent storm totally exhausts its own tragic fury.", "A brilliant morning breaks over the soul, where their name no longer causes your chest to tighten, but merely evokes a gentle, warm nostalgia."],
-  ["PART 5: Pain & Separation", "Pain", "Growth Through Pain", "Your spirit fractures, but beautifully heals phenomenally stronger into the glowing breaks.", "We expand exclusively through being stretched; the agonizing pain of heartbreak is simply the necessary stretching of an evolving, beautiful soul."],
-  ["PART 5: Pain & Separation", "Pain", "Love Never Dies", "Profound energy simply changes shape; it can never be entirely lost.", "The pure love you generated didn't vanish; it absorbed beautifully into the universe, permanently and magnificently elevating the collective human heart."],
-
-  // PART 6: Divine Love
-  ["PART 6: Divine Love", "Divine", "Radha–Krishna Love Meaning", "It conceptually represents the eternal, breathtaking dance of cosmic creation.", "The delicate individual soul endlessly longing to violently merge back into the vast, absolute, ocean-like bliss of Supreme Consciousness."],
-  ["PART 6: Divine Love", "Divine", "Bhakti (Devotion)", "True Bhakti is magnificently illogical to the calculating, rigid human mind.", "It is the total, ecstatic shedding of the limiting ego, dancing flawlessly in the holy fire until the worshipper and the worshipped become one."],
-  ["PART 6: Divine Love", "Divine", "Love as Worship", "Looking deeply into the fragile eyes of another and seeing the absolute Divine.", "When you treat their pure joy as a silent prayer, secular love instantly and beautifully transforms into soaring spiritual elevation."],
-  ["PART 6: Divine Love", "Divine", "Spiritual Connection", "Our physical bodies are merely the temporary, fragile vessels that brought us together.", "The radiant connection exists entirely independently of form, echoing beautifully in a higher dimension completely untouched by decaying time."],
-  ["PART 6: Divine Love", "Divine", "Loving God", "God is not an entity sitting distantly upon a cold, external throne.", "To wildly love God is to intimately love the breathing universe, observing the stunning, quiet divinity existing in every falling leaf and heartbeat."],
-  ["PART 6: Divine Love", "Divine", "Surrender in Love", "Spiritual surrender is the absolute opposite of tragic defeat.", "It is the massive, victorious letting go of the heavy illusion of control, beautifully allowing a higher, majestic current to safely carry the relationship."],
-  ["PART 6: Divine Love", "Divine", "Ego vs Love", "The terrified ego constantly builds enormously tall, protective walls; love beautifully builds long bridges.", "Where the ego firmly insists on remaining separate, divine love gracefully yields, dissolving the illusion of 'me' and 'you' entirely."],
-  ["PART 6: Divine Love", "Divine", "Pure Devotion", "It asks for absolutely no transactional receipt from the universe.", "Pure devotion pours perfectly, beautifully empty, offering its entire glowing essence without the corrupting, selfish desire to be rewarded for it."],
-  ["PART 6: Divine Love", "Divine", "Love Without Desire", "Heavy desire frantically wants to consume the fire; pure love simply beautifully basks in its warmth.", "Reaching a breathtaking state where their mere existence is joy enough, beautifully free from the heavy gravity of possessing."],
-  ["PART 6: Divine Love", "Divine", "Sacred Love", "The quiet, invisible space softly resting between you is a glowing temple.", "When you walk onto that holy ground, you gracefully remove the muddy shoes of judgment and fear, offering only crystalline transparency."],
-  ["PART 6: Divine Love", "Divine", "Inner Peace Through Love", "Profound love does not agitate the spirit; it entirely stills the turbulent, dark waters.", "It delicately provides a vast, quiet foundation of security where the profoundly exhausted mind can finally cease running and beautifully rest."],
-  ["PART 6: Divine Love", "Divine", "Divine Union", "Two completely distinct flames merging perfectly into one massive, blinding light.", "It is the total, beautiful obliteration of boundaries, an ecstatic spiritual climax where separateness is proven to be an absolute, tragic illusion."],
-  ["PART 6: Divine Love", "Divine", "Love Beyond Physical", "Tying the magnificent knot entirely and exclusively with the soul.", "When illness, aging, and harsh distance ravage the physical form, this intense, unseen golden cord holds the structure beautifully intact."],
-  ["PART 6: Divine Love", "Divine", "Soul Connection", "An immediate, unexplainable, deeply ancient and gorgeous resonance.", "It feels not like exploring a stunning new land, but dramatically reopening the familiar door to a warm home you completely forgot you possessed."],
-  ["PART 6: Divine Love", "Divine", "Meditation and Love", "To love deeply is a profoundly active, breathtaking meditation.", "It anchors you violently to the exact present moment, utilizing the absolute beauty of the beloved as the flawless focal point of devotion."],
-  ["PART 6: Divine Love", "Divine", "Love and Enlightenment", "True, profound enlightenment is the final, magnificent dropping of all fear.", "When you genuinely love the entire universe without attachment, the massive cosmic joke reveals itself, and you instantly step into radiant light."],
-  ["PART 6: Divine Love", "Divine", "Radha’s Devotion", "She possessed absolutely nothing materially, yet she essentially owned the Universe.", "By bravely abandoning all societal logic and plunging fearlessly into pure surrender, she became the pinnacle of exquisite spiritual ache."],
-  ["PART 6: Divine Love", "Divine", "Krishna’s Love", "He is flawlessly, beautifully detached and yet infinitely, intimately accessible.", "Playing the mesmerizing, glowing flute that violently awakens the sleeping soul, lovingly calling it back through the dark woods to its absolute origin."],
-  ["PART 6: Divine Love", "Divine", "Symbolism of Their Love", "It is the grand, tragic blueprint of the entire human condition.", "The desperate heartbreak of separation beautifully juxtaposed with the immense, breathtaking ecstasy of eternal, inevitable reunion in the stars."],
-  ["PART 6: Divine Love", "Divine", "Becoming Divine Love", "You entirely cease being the fragile cup, and fundamentally beautifully become the water itself.", "Moving gracefully through every tiny interaction on this earth as a direct, blazing conduit for radical, unshakeable cosmic compassion."],
-
-  // PART 7: Love in Life
-  ["PART 7: Love in Life", "Life", "Love in Family", "The extraordinarily beautiful, often highly imperfect, first classroom of the fragile heart.", "It tragically and wonderfully teaches us the heavy baseline of unconditional endurance, binding different souls through the rhythm of blood."],
-  ["PART 7: Love in Life", "Life", "Love in Friendship", "The beautiful, deeply chosen, magnificent family of the wandering spirit.", "A sanctuary where we are profoundly loved not by heavy obligation, but by the sheer, magnificent joy of our deeply resonant company."],
-  ["PART 7: Love in Life", "Life", "Love in Society", "The invisible, glowing mortar holding the fragile bricks of civilization perfectly intact.", "Compassion for the completely unknown stranger is the highest, most spectacularly advanced marker of our beautifully evolving human consciousness."],
-  ["PART 7: Love in Life", "Life", "Love in Career", "Endless work devoid of genuine love is exhausting, soulless, cold labor.", "When you prominently pour massive, focused love into your craft, it ceases to be a job and wonderfully transforms into profound art and service."],
-  ["PART 7: Love in Life", "Life", "Love and Responsibility", "They are absolutely inseparable, profoundly beautiful twin sisters.", "To deeply love someone is to boldly shoulder the massive, gorgeous responsibility of meticulously caring for their totally exposed, fragile vulnerabilities."],
-  ["PART 7: Love in Life", "Life", "Love and Growth", "A permanently stagnant river turns fundamentally dark and toxic.", "Healthy love acts as a swift, terrifying, beautifully cleansing current that constantly rushes two people towards massive self-improvement."],
-  ["PART 7: Love in Life", "Life", "Love and Happiness", "True happiness is the stunning, effortless byproduct of love freely given.", "If you try to violently extract it from someone, you fail. If you joyfully pour love into them, happiness abundantly, gorgeously overflows."],
-  ["PART 7: Love in Life", "Life", "Love and Mental Health", "Love acts as a brilliant, warm lamp securely lit in the pitch-dark corridors of a struggling mind.", "Knowing you are fundamentally seen and safely anchored heavily accelerates the brutal, deeply painful journey out of massive darkness."],
-  ["PART 7: Love in Life", "Life", "Love and Success", "Empty, screaming ambition leaves you utterly starving atop a mountain of cold gold.", "True, magnificent success is returning home to someone whose bright eyes light up intensely the precise moment you gently open the door."],
-  ["PART 7: Love in Life", "Life", "Love in Daily Life", "It lives so beautifully and magically in the absolutely mundane.", "Love is profoundly washing their dishes when they are completely exhausted, and actively listening to their spectacularly boring stories with deep fascination."],
-  ["PART 7: Love in Life", "Life", "Expressing Love", "It requires immense, breathtaking bravery to constantly speak it out loud.", "Never assume they already know. Speak your brilliant love loudly before time abruptly, tragically takes the ultimate option away."],
-  ["PART 7: Love in Life", "Life", "Receiving Love", "Many easily and constantly give it, but violently, tragically block its return.", "You must massively heal the internal shame that secretly whispers you are fundamentally unworthy of the incredibly beautiful things offered to you."],
-  ["PART 7: Love in Life", "Life", "Balance in Love", "An exquisitely beautiful, delicate seesaw of giving and gracefully taking.", "If one continually pours while the other permanently drinks, the well runs brutally dry. True love requires a constant, beautiful replenishment."],
-  ["PART 7: Love in Life", "Life", "Love and Time Management", "We uniquely give our fleeting time exclusively to the exact things we genuinely value.", "Telling someone you are entirely 'too busy' simply implies their profound importance securely ranks far below your endless external distractions."],
-  ["PART 7: Love in Life", "Life", "Love and Self-Respect", "Massive tolerance of brutal disrespect is not profound love; it is profound fear.", "You absolutely cannot love someone correctly while simultaneously setting your own beautiful self-respect violently on fire to keep them warm."],
-  ["PART 7: Love in Life", "Life", "Love and Confidence", "To be deeply, securely loved equips you with a massive, invisible, glowing armor.", "When you safely know your absolute core is totally secure, you step brilliantly into the terrifying world with explosive, unapologetic grace."],
-  ["PART 7: Love in Life", "Life", "Love and Purpose", "Love fundamentally *is* the entire magnificent purpose.", "All earthly money, absolute fame, and raw power eventually crumble to utter dust; only the massive impact of the love you gave remains eternal."],
-  ["PART 7: Love in Life", "Life", "Living With Love", "Approaching every terrifying, chaotic disaster with massive, unshakeable grace.", "When the deep engine of your life operates fundamentally on love instead of absolute fear, the entire universe beautifully aligns strictly to support you."],
-  ["PART 7: Love in Life", "Life", "Love and Gratitude", "Gratitude is the immensely powerful, golden fuel that keeps massive love burning bright.", "When you stop wildly appreciating them, dark resentment silently creeps through the small cracks, slowly suffocating the relationship."],
-  ["PART 7: Love in Life", "Life", "Love and Positivity", "Love naturally operates securely at an immensely high, beautiful vibration.", "It magnetically attracts brilliant light, constantly turning massive challenges into powerful stepping stones and brutal tragedies into spiritual lessons."],
-
-  // PART 8: Self Love
-  ["PART 8: Self Love", "Self", "What is Self Love?", "It is the breathtaking, fierce act of entirely refusing to violently abandon yourself.", "Particularly when you brutally fail, make terrible mistakes, and tragically fall completely short of the immense expectations you hold."],
-  ["PART 8: Self Love", "Self", "Importance of Self Love", "You absolutely cannot beautifully pour incredibly fresh water from an utterly toxic well.", "How you intimately, softly treat yourself beautifully sets the exact universal standard for how the entire world is ultimately permitted to treat you."],
-  ["PART 8: Self Love", "Self", "Accepting Yourself", "Massively, bravely integrating the light and the deeply hidden, terrifying dark.", "It is boldly looking in the mirror, observing the jagged scars, and declaring loudly with absolute love: 'I am entire, whole, and completely enough.'"],
-  ["PART 8: Self Love", "Self", "Healing Yourself", "Viciously, bravely doing the brutal, exhausting, profoundly beautiful inner work.", "Sitting silently with your terrifying traumas, heavily and delicately stitching your massive soul back together with immense, glowing golden thread."],
-  ["PART 8: Self Love", "Self", "Confidence Building", "Radically keeping the incredibly hard, daily promises you aggressively make to yourself.", "Confidence is not anxiously predicting they will massively like you; it is profoundly knowing you will be spectacularly fine even if they absolutely do not."],
-  ["PART 8: Self Love", "Self", "Self Respect", "Walking beautifully and gracefully away from tables where immense emotional starvation is served.", "Choosing your brilliant, unshakeable peace over engaging in totally chaotic, dramatic wars that violently drain your massive spiritual battery."],
-  ["PART 8: Self Love", "Self", "Setting Boundaries", "A profound, breathtakingly beautiful act of fierce self-preservation.", "Politely saying an absolute 'no' to the heavy demands of others so you can finally, wonderfully scream an ecstatic 'yes' directly to your wildly exhausted soul."],
-  ["PART 8: Self Love", "Self", "Self Care", "It is far more deeply profound, difficult, and messy than simple bubble baths.", "It is aggressively cutting off incredibly toxic friendships, and totally reparenting the vastly terrified child living silently, secretly inside you."],
-  ["PART 8: Self Love", "Self", "Loving Your Flaws", "The breathtaking Japanese art of beautifully filling broken, jagged cracks with solid gold.", "Your massive imperfections are spectacularly exactly where the brilliant human light powerfully enters and radically exits your remarkable spirit."],
-  ["PART 8: Self Love", "Self", "Inner Peace", "Fiercely detaching from massive, exhausting external validation.", "Arriving absolutely at a stunning, unshakeable stillness where no passing compliment can massively elevate you, and no bitter insult can severely destroy you."],
-  ["PART 8: Self Love", "Self", "Mental Strength", "Violently, elegantly overriding the terrifying, extremely loud inner critic.", "When the heavy voices brutally scream you are totally worthless, mental strength gently whispers with beautiful finality: 'I respectfully entirely disagree.'"],
-  ["PART 8: Self Love", "Self", "Emotional Balance", "Riding the massive, terrifying, violent waves entirely without ultimately drowning in them.", "Letting extremely heavy sadness radically wash completely over you logically without decidedly unpacking your bags to live miserably inside the tragedy."],
-  ["PART 8: Self Love", "Self", "Self Growth", "Painfully and beautifully shedding the incredibly tight, old, incredibly restrictive skin.", "Fiercely acknowledging the massively comfortable version of you must utterly die so the brilliant, totally ascended version of you can magnificently emerge."],
-  ["PART 8: Self Love", "Self", "Becoming Independent", "Creating total massive, unshakeable security heavily and beautifully from completely within.", "Understanding deeply that absolutely nobody is physically coming to dramatically save you—you intensely are the sole, majestic architect of your own rescue."],
-  ["PART 8: Self Love", "Self", "Loving Your Journey", "Violently and unapologetically rejecting the immensely toxic, arbitrary timeline of society.", "Deeply honoring your spectacularly unique pace, knowing fiercely that a blooming flower cannot be aggressively rushed by terrorizing its elegant petals."],
-  ["PART 8: Self Love", "Self", "Forgiving Yourself", "Radically extending immense, warm mercy to your deeply younger, massively naive self.", "You uniquely operated strictly on wildly limited information at that time; fiercely release the utterly punishing guilt of intense hindsight entirely and permanently."],
-  ["PART 8: Self Love", "Self", "Positive Mindset", "An aggressive, daily, brutal, beautifully exhausting mental discipline.", "It is absolutely not wildly ignoring the terrifying darkness; it is intensely forcing the deeply exhausted mind to continuously hunt exactly for the magnificent light."],
-  ["PART 8: Self Love", "Self", "Inner Happiness", "A heavily fortified, completely untouchable, gorgeously radiant fortress generated within.", "It completely relies on absolutely no volatile human being or radically fluctuating financial situation to deeply, brilliantly, unshakeably thrive."],
-  ["PART 8: Self Love", "Self", "Self Worth", "Deeply realizing your massive, inherent value is totally completely unbroken and unshakeable.", "You are vastly more precious than deep gold simply because you violently exist—utterly independent of how massively productive you currently are."],
-  ["PART 8: Self Love", "Self", "Becoming Complete", "The magnificent, breathtaking end of the completely desperate, exhausting external search.", "You radically look across the vast room, make absolutely direct eye contact exactly with your own wild reflection, and boldly, genuinely smile."],
-
-  // PART 9: Philosophy of Love
-  ["PART 9: Philosophy of Love", "Philosophy", "Love and Truth", "Love completely, violently, and beautifully demands the absolute, horrific truth.", "To brutally hide your deep shadows is to utterly deny your lovely partner the vast privilege of fiercely loving the completely beautiful, entire string of you."],
-  ["PART 9: Philosophy of Love", "Philosophy", "Love and Reality", "Massively rounding the wild, chaotic romantic fantasy into deep beautiful gravel.", "True love beautifully sweeps the messy kitchen floor long after the completely majestic carriage has aggressively turned violently and permanently back into a pumpkin."],
-  ["PART 9: Philosophy of Love", "Philosophy", "Love vs Illusion", "Infatuation desperately loves the spectacularly beautiful, completely empty mirage.", "Deep love fiercely loves the terribly cracked, vastly flawed, heavily real foundation dramatically revealed fiercely when the massive illusion suddenly violently breaks."],
-  ["PART 9: Philosophy of Love", "Philosophy", "Love and Time", "Eternity captured magically, effortlessly in one spectacular, suspended fraction of a second.", "Time rapidly destroys massive galaxies, but a truly profound love violently defies physics by beautifully expanding perfectly beyond absolutely all dimensional decay."],
-  ["PART 9: Philosophy of Love", "Philosophy", "Love and Death", "The absolutely final, brutal, ultimate massive physical test of the beating heart.", "Death completely snatches the fragile physical body, but the massive gravitational pull of true love entirely transcends the deep, black soil of the grave."],
-  ["PART 9: Philosophy of Love", "Philosophy", "Love and Destiny", "The utterly magnificent illusion of free will heavily, beautifully colliding into fate.", "We magically choose who to love, incredibly unaware that our deep, wandering souls precisely signed the massive energetic contract perfectly lifetimes spectacularly prior."],
-  ["PART 9: Philosophy of Love", "Philosophy", "Love as Energy", "An absolutely vibrating, fundamentally indestructible, wildly healing frequency.", "It uniquely travels magically through completely dense walls and vastly across brutal screaming oceans instantly to deeply comfort a wildly grieving, chaotic mind."],
-  ["PART 9: Philosophy of Love", "Philosophy", "Love and Universe", "The incredibly cosmic, breathtaking glue powerfully locking the burning stars.", "The universe fundamentally isn't a completely dead machine—it is a stunningly living, breathing, massive engine utterly powered entirely by magnetic connection."],
-  ["PART 9: Philosophy of Love", "Philosophy", "Love and Karma", "Exquisite, perfect justice completely served violently heavily through the beautifully broken heart.", "We are magnetically aggressively drawn absolutely to perfectly whoever we need to desperately interact with to wildly break our incredibly stubborn cyclic patterns."],
-  ["PART 9: Philosophy of Love", "Philosophy", "Love and Freedom", "A spectacularly beautiful, impossible paradox of intense internal physics.", "The more heavily and unconditionally you absolutely love violently set someone entirely free, the completely closer their vast soul magically magnetically returns directly to you."],
-  ["PART 9: Philosophy of Love", "Philosophy", "Love and Suffering", "Two intensely brutal, gorgeous sides of precisely the exact same ancient coin.", "Suffering is completely the intense, beautiful price we aggressively, openly agree fiercely to pay heavily for entirely experiencing absolute profound and deep attachment."],
-  ["PART 9: Philosophy of Love", "Philosophy", "Love and Joy", "The utterly magnificent, explosive, colorful flowering of the profoundly secure spirit.", "Deep joy famously erupts entirely effortlessly directly from the massively fertile, beautiful soil of a brilliantly quiet, well-tended, ferociously safe emotional connection."],
-  ["PART 9: Philosophy of Love", "Philosophy", "Love and Balance", "The beautiful ancient Tao brilliantly operating intimately between two wildly beating hearts.", "Too massive an aggressive grip completely chokes it; too wildly loose a grip completely loses it. The stunning magic dramatically is immensely holding gracefully center."],
-  ["PART 9: Philosophy of Love", "Philosophy", "Love and Duality", "The radiant bright day intensely and hopelessly loving the deeply mysterious, dark night.", "We desperately incredibly require the massive, painful friction of exactly our wild, opposite traits directly fiercely to rapidly accelerate each beautiful other's magnificent totality."],
-  ["PART 9: Philosophy of Love", "Philosophy", "Love and Existence", "We entirely love another, incredibly therefore we absolutely fundamentally truly are.", "To exist completely entirely devoid of wildly engaging in deep love is to simply heavily, desperately survive mechanically absolutely without essentially uniquely massively living."],
-  ["PART 9: Philosophy of Love", "Philosophy", "Love and Consciousness", "The spectacular ultimate, highest beautiful state of the profoundly awake, glowing brain.", "Radical ego death magically achieved entirely not magically by wildly isolating completely alone, spectacularly but violently by heavily submitting vastly to another entirely."],
-  ["PART 9: Philosophy of Love", "Philosophy", "Love and Infinity", "A tiny, fragile, trembling drop beautifully returning absolutely violently to the massive ocean.", "Looking incredibly directly intensely deeply into spectacularly familiar human eyes completely incredibly recognizing the stunning entirely face exactly of God fiercely looking wildly back."],
-  ["PART 9: Philosophy of Love", "Philosophy", "Love Beyond Logic", "The brilliantly completely failing, aggressively chaotic mind totally absolutely massively retreating violently in awe.", "Logic furiously demands completely protective walls; love magnificently notoriously jumps aggressively straight wildly completely off the spectacular high cliff simply because heavily the air violently feels incredibly beautiful."],
-  ["PART 9: Philosophy of Love", "Philosophy", "Love Beyond Limits", "Expanding fiercely entirely absolutely past spectacular immense exhaustion completely.", "Fiercely deeply giving incredibly massively way far past specifically the very deep boundary where your fiercely rational deep brain aggressively wildly screamed you had absolutely nothing strictly uniquely left."],
-  ["PART 9: Philosophy of Love", "Philosophy", "Ultimate Truth of Love", "The absolutely final incredibly profound gorgeous deeply brilliant breathtaking entirely complete gorgeous incredibly massive stunningly beautiful secret.", "There remarkably simply deeply fundamentally is amazingly exclusively literally purely completely exclusively incredibly intensely fiercely utterly undeniably absolutely entirely wonderfully nothing remarkably beautifully else incredibly anywhere."],
-
-  // PART 10: Quotes & Reflections
-  ["PART 10: Quotes & Reflections", "Quotes", "Love is not found, it is felt.", "A sudden, beautiful frequency shift in the absolute silence.", "The heart suddenly recognizing its long-forgotten homeland."],
-  ["PART 10: Quotes & Reflections", "Quotes", "Where ego ends, love begins.", "The tiny, protective drop dissolving effortlessly into the vast, infinite ocean.", "The walls uniquely falling specifically so the breathtaking light can spectacularly enter."],
-  ["PART 10: Quotes & Reflections", "Quotes", "Radha didn’t love Krishna, she lived him.", "Becoming the profoundly beautiful, entirely consuming song itself.", "A devotion so immensely entirely pure it essentially completely erased the dancer, leaving entirely exclusively only the dance."],
-  ["PART 10: Quotes & Reflections", "Quotes", "To love is to see God.", "Looking perfectly past the fragile physical disguise correctly.", "Recognizing gracefully incredibly exactly the divine heavily sparkling quietly identically deeply utterly perfectly accurately uniquely exclusively securely reliably inside."],
-  ["PART 10: Quotes & Reflections", "Quotes", "Hold tightly, but never heavily.", "The brilliant fragile butterfly resting peacefully on the open, trusting palm.", "Loving without building a desperate cage."],
-  ["PART 10: Quotes & Reflections", "Quotes", "Patience is love's quiet anchor.", "Waiting beautifully through the long, desperately chaotic winter storms entirely gracefully.", "The deepest uniquely beautiful devotion gracefully trusting the quiet turning of the seasons."],
-  ["PART 10: Quotes & Reflections", "Quotes", "The heart remembers what the mind forgets.", "An ancient, undeniable, heavy vibration suddenly waking up.", "You can tragically erase the physical memory, but the magnificent soul never forgets its true home."],
-  ["PART 10: Quotes & Reflections", "Quotes", "True connection needs no translation.", "The magnificent, silent language of the awake, breathing soul.", "Words are fragile attempts to roughly describe the absolute beautiful symphony inherently playing between two spirits."],
-  ["PART 10: Quotes & Reflections", "Quotes", "Healing begins where judgment ends.", "Absolute grace is the ultimate, profound emotional medicine.", "Love completely refuses to violently condemn the heavy scars it was beautifully invited directly to witness and deeply heal."],
-  ["PART 10: Quotes & Reflections", "Quotes", "A spark fades, but a root deepens.", "The enduring, unshakeable power of genuine, quiet depth.", "Do not desperately seek the temporary fiery explosion; softly cultivate the massive, quiet garden that survives the frozen winter."],
-  ["PART 10: Quotes & Reflections", "Quotes", "Loving you is my highest rebellion.", "Defying the chaotic, cold gravity of modern, tragic isolation.", "In a vastly terrifying world desperately building massive walls, choosing to radically love is the most magnificent, dangerous revolution."],
-  ["PART 10: Quotes & Reflections", "Quotes", "Tears are the prayers the heart cannot speak.", "The silent, beautiful waters of absolute, desperate devotion.", "When the overwhelming emotion brutally shatters language, the spirit simply overflows beautifully directly from the eyes."],
-  ["PART 10: Quotes & Reflections", "Quotes", "Freedom is the highest expression of care.", "Loving fiercely without brutally building a golden cage.", "To entirely, unconditionally love a bird is to gracefully watch it beautifully fly, absolutely trusting its inevitable, majestic return."],
-  ["PART 10: Quotes & Reflections", "Quotes", "In the mathematics of love, one plus one equals everything.", "The stunning, breathtaking miracle of total, cosmic unity.", "When two fragile individuals beautifully cross the great divide, they strangely become exponentially vastly larger than their simple sum."],
-  ["PART 10: Quotes & Reflections", "Quotes", "I loved you long before I met you.", "The soul's undeniable, deeply ancient prophecy perfectly fulfilled.", "You were a persistent, magnificent, glowing ache in my quiet chest for decades before you finally stepped into the warm room."],
-  ["PART 10: Quotes & Reflections", "Quotes", "Distance tests the altitude of affection.", "Profound love simply travels beautifully over the darkest, massive waves.", "Absence brutally extinguishes the small, fragile candle, but dramatically, violently fuels the massive, unshakeable forest fire."],
-  ["PART 10: Quotes & Reflections", "Quotes", "Self-love is the first romance.", "You absolutely cannot pour incredibly fresh water from an utterly toxic well.", "You must massively heal your own fragile spirit before you can ever be the unshakeable, beautiful peace deeply required by theirs."],
-  ["PART 10: Quotes & Reflections", "Quotes", "We are all walking each other home.", "The shared, tragic, incredibly beautiful pilgrimage of fragile humanity.", "Love is simply realizing we are utterly lost in the dark together, and softly choosing to fiercely hold hands in the terrifying night."],
-  ["PART 10: Quotes & Reflections", "Quotes", "Grace steps in when logic shatters.", "The ultimate, impossibly beautiful, divine safety net of the universe.", "When the fragile, calculating mind breaks violently under the heavy grief, love elegantly catches the wildly falling pieces completely."],
-  ["PART 10: Quotes & Reflections", "Quotes", "Eternity is simply an unbroken string of 'nows' spent with you.", "The singular, magnificent, infinite moment of absolute arrival.", "When I am deeply seated beside you, the frantic, tragic clock completely stops, and we beautifully step into forever."]
-];
-
-export const books: Book[] = rawData.map((data, index) => {
-  const content = [];
-  if (data[3]) content.push(data[3]);
-  if (data[4]) content.push(data[4]);
-  
-  // Clean the chapter title to see if it matches our specific generated image files
-  const rawTitle = data[2];
-  const safeTitle = rawTitle.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/(^_|_$)/g, '');
-  
-  const specificImages = [
-    'details_of_love', 'how_to_love', 'love_quotes', 
-    'love_vs_attachment', 'what_is_love', 'which_is_love'
-  ];
-  
-  // Decide the image based on specific file availability vs falling back to the 10 core beautiful Parts
-  let imageName = `part${Math.floor(index / 20) + 1}`; 
-  if (specificImages.includes(safeTitle)) {
-    imageName = safeTitle;
-  }
-  
-  return {
-    amazon_in_product_url: "#",
-    title: `${index + 1}. ${data[2]}`,
-    author: data[0],
-    published_date: "Timeless",
-    mrp: null,
-    genre: data[1],
-    amazon_in_customer_rating: 5.0,
-    total_reviews: 1000 + index * 100,
-    book_cover_image_url: `/images/${imageName}.png`,
-    content,
-  };
+export const books: Book[] = [];
+bookData.parts.forEach((partObj) => {
+  partObj.chapters.forEach((chapter) => {
+    books.push({
+      amazon_in_product_url: "#",
+      title: `${chapter.id}. ${chapter.title}`,
+      author: chapter.author,
+      published_date: "Timeless",
+      mrp: null,
+      genre: `Quote | ${chapter.tags.split(',')[0] || "Wisdom"}`,
+      amazon_in_customer_rating: 5.0,
+      total_reviews: 1000 + chapter.id * 100,
+      book_cover_image_url: "/images/love_quotes.png",
+      content: chapter.content
+    });
+  });
 });
 
 export const genres = [...new Set(books.map((book) => book.genre))];

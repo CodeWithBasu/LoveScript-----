@@ -77,22 +77,45 @@ export const CoverPage = React.forwardRef<HTMLDivElement, { type: "front" | "bac
       data-density="hard"
     >
       {type === "front" ? (
-        <div className="text-center p-8">
-          <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-rose-100/10 flex items-center justify-center">
-            <svg className="w-10 h-10 text-rose-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1.5}
-                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-              />
-            </svg>
+        <div className="w-full h-full p-4 md:p-6 relative text-center flex flex-col">
+          {/* Inner Golden/Rose Frame */}
+          <div className="flex-1 border border-rose-300/30 rounded-sm p-8 flex flex-col items-center justify-center relative overflow-hidden">
+            {/* Elegant corner decorations */}
+            <div className="absolute top-2 left-2 w-8 h-8 border-t border-l border-rose-300/40 rounded-tl-lg" />
+            <div className="absolute top-2 right-2 w-8 h-8 border-t border-r border-rose-300/40 rounded-tr-lg" />
+            <div className="absolute bottom-2 left-2 w-8 h-8 border-b border-l border-rose-300/40 rounded-bl-lg" />
+            <div className="absolute bottom-2 right-2 w-8 h-8 border-b border-r border-rose-300/40 rounded-br-lg" />
+            
+            <div className="w-20 h-20 mx-auto mb-8 rounded-full bg-linear-to-tr from-rose-500/20 to-rose-300/5 backdrop-blur-md border border-rose-200/10 flex items-center justify-center shadow-2xl shadow-rose-900/50">
+              <svg className="w-10 h-10 text-rose-100 drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1.5}
+                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                />
+              </svg>
+            </div>
+            
+            <h1 className="text-3xl md:text-4xl font-serif font-bold mb-4 tracking-wide bg-linear-to-r from-rose-200 via-white to-rose-200 bg-clip-text text-transparent drop-shadow-sm">
+              The Book of Love
+            </h1>
+            
+            <p className="text-rose-200/70 text-sm md:text-base max-w-xs mx-auto italic font-serif leading-relaxed">
+              A profound exploration of love, connection, and truth.
+            </p>
+            
+            <div className="mt-12 flex flex-col items-center">
+              <div className="w-12 h-px bg-linear-to-r from-transparent via-rose-400/50 to-transparent mb-4" />
+              <p className="text-rose-400/80 text-[10px] tracking-[0.3em] uppercase mb-2 font-medium">Author</p>
+              <p className="font-serif italic text-rose-100 text-xl lg:text-2xl drop-shadow-sm">Basudev</p>
+              <div className="w-12 h-px bg-linear-to-r from-transparent via-rose-400/50 to-transparent mt-4" />
+            </div>
+
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-rose-300/40 text-xs tracking-widest uppercase">
+              Click or drag →
+            </div>
           </div>
-          <h1 className="text-2xl md:text-3xl font-serif font-bold text-rose-100 mb-3">The Book of Love</h1>
-          <p className="text-rose-200/80 text-sm md:text-base max-w-xs mx-auto">
-            A profound exploration of love, connection, and truth.
-          </p>
-          <div className="mt-8 text-rose-300/60 text-xs">Click or drag to turn pages →</div>
         </div>
       ) : (
         <div className="text-center p-8">
